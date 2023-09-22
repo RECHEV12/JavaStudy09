@@ -132,6 +132,65 @@ public class OperatorMain {
         int anyNum = 7;
         System.out.println(anyNum % 2);
 
+        System.out.println("\n====================페이징===================\n");
+
+        // 게시판 페이징 구현
+        int totalCountGul = 333; // 게시판에 글이 총 33개 있다.
+        int showCountPage = 10; // 한 페이지에서 보여줄 글의 수가 10개
+
+        // 총 페이지 수 4페이지
+        // 33/10 =3.3(올림처리) = 4
+        int totalPage = (int)Math.ceil((double)totalCountGul / showCountPage);
+        System.out.println(totalPage);
+
+        // 마지막 4페이지에 있는 글의 개수 = 3
+        // 33/ 10 = 3
+
+        int countlastPage = (totalCountGul % showCountPage );
+        System.out.println(countlastPage);
+
+        System.out.println("\n====================페이징===================\n");
+        // 비교 연산자
+        int numFive = 5;
+        double pi = 3.14;
+        int numOne = 1;
+
+        // 비교 결과에 따라 TRUE와 FALSE가 리턴된다.
+        System.out.println(numFive < numOne);
+        System.out.println(numFive > numOne);
+
+        // 결과가 TRUE와 FALSE라서 boolean에 담을 수 있다.
+        boolean boolrst = numFive > numOne;
+
+        System.out.println(numFive < pi);
+
+        // ==는 왼쪽과 오른쪽이 같은지 비교
+
+        System.out.println(numFive == pi);
+        System.out.println(numFive == 5);
+
+        // !=는 왼쪽과 오른쪽이 다른지 비교
+        // 다르다면 TRUE와 FALSE
+        System.out.println(numOne != numFive);
+        System.out.println(numFive != 5);
+
+        // 문자(char)도 비교연산자를 통해 이름순 정렬에 사용할 수 있다.
+        System.out.println('가' < '나'); // 유니코드상 '가'가 '나'보다 먼저 위치 = '가'가 작은 숫자 라는 뜻
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
