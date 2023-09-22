@@ -125,6 +125,13 @@ public class OperatorMain {
 
         System.out.println("\n=========================\n");
 
+        //나머지 연산자(%) 사용 예시
+
+        // 홀수 짝수 판별
+        // 2로 나누었을 때 0이면 짝수, 1이면 홀
+        int anyNum = 7;
+        System.out.println(anyNum % 2);
+
 
 
 
