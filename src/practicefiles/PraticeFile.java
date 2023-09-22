@@ -1,0 +1,23 @@
+package practicefiles;
+
+public class PraticeFile {
+    public static void main(String[] args) {
+
+
+        int example = 278;
+        String strExm = ("" + example);
+
+
+        System.out.println((Integer.parseInt(strExm.substring(0, 1)) )
+                         + (Integer.parseInt(strExm.substring(1, 2) ))
+                         + (Integer.parseInt(strExm.substring(2, 3))));
+
+        System.out.println(strExm.indexOf("7"));
+
+
+
+
+
+
+    }
+}
