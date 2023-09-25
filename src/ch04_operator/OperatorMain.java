@@ -315,12 +315,21 @@ public class OperatorMain {
 
         // 십진수 303과 147에 대해서 비트연산자 &를 직접 해보기
         System.out.println(303 & 147);
+        //303 = 100101111 , 147 = 10010011
 
-
-        11110100
-         1100100
-       1100100
-
+        // 16진수 12f와 147에 대한 비트연산자 & 결과값
+        // 2진수 16진수 String으로 표현
+        String sixteenNum  = "12f";
+        // 16진수(String)를 10진수(int)로 변환
+        // 파라미터에 16을 추가
+        int tenNum = Integer.parseInt(sixteenNum, 16);
+        System.out.println(tenNum);
+        // 2진수 변환 toBinaryString
+        String binaryNum = Integer.toBinaryString(303);
+        System.out.println(binaryNum);
+        // 10진수를 16진수로 변환 toHexSring
+        String hexNum = Integer.toHexString(303);
+        System.out.println(hexNum);
 
 
 
