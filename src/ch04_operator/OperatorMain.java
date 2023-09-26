@@ -24,7 +24,7 @@ public class OperatorMain {
         System.out.println("나누기 " + (numA / numB));
         System.out.println("나머지 " + (numA % numB));
 
-        System.out.println("\n=========================\n");
+        System.out.println("\n========123=================\n");
 
         // 증감 연산자
         numA++; // 1증가

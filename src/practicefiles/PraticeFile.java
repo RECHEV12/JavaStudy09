@@ -1,5 +1,7 @@
 package practicefiles;
 
+import java.util.Scanner;
+
 public class PraticeFile {
     public static void main(String[] args) {
 
@@ -14,8 +16,16 @@ public class PraticeFile {
 
         System.out.println(strExm.indexOf("7"));
 
-
-
+        Scanner scan = new Scanner(System.in);
+        System.out.println("이름을 입력해주세요.");
+        System.out.print(">>> ");
+        String reverAn = "";
+        String reverse = scan.nextLine();
+        for (int i = 0 ; i < reverse.length() ; i++){
+            String reverSub = reverse.substring(reverse.length()-(1+i),reverse.length()-i);
+            reverAn += reverSub;
+        }
+        System.out.println(reverAn);
 
 
 
