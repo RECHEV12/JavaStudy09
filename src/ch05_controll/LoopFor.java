@@ -1,6 +1,6 @@
 package ch05_controll;
 
-public class Loop {
+public class LoopFor {
     public static void main(String[] args) {
         //반복문
         //for문
@@ -159,15 +159,110 @@ public class Loop {
                 }
         }
         System.out.println("슈의 갯수 : " + syuPlus);
+        System.out.println("\n=========================\n");
+        // break문
+        // 반복문을 종료 시키는데 사용
+        // 반복횟수를 줄여서 실행속도를 향상시키는데 사용
+
+        // 내 이름을 유니코드로 표현한다면?
+        // 유니코드 0~70000 중에 찾기
+        //
+        char word = 0;
+        for (int i = 0 ; i < 70000 ; i++){
+            if (word == '우'){
+                System.out.println(i);
+                System.out.println(word);
+                break; //  break문이 실행되면 가까운 반복문(for while)
+                // 하나를 즉시 종료
+            }
+            word++;
+        }
+        System.out.println("\n=========================\n");
+
+        //continue 문
+        // 구구단을 출력하는 중에 너무 쉬운  1 2 3 은 출력안함
+         for (int i = 0 ; i <= 9 ; i++){
+             if (i<4){
+                 // 반복문 내에서 continue가 실행되면
+                 // 바로 다음 반복문으로 넘어간다
+                 // (continue 아래의 코드는 실행되지 않음)
+                 continue;
+             }
+             System.out.println("8 x " + i + " = " +  (8 *  i));
+
+        }
+        System.out.println("\n=========================\n");
+         // 구구단(2단~9단) 출력
+        for (int i = 2 ; i<= 9 ; i++){
+            System.out.println(i + "단");
+            for (int t = 2 ; t<=9 ; t++){
+            System.out.println(i + " X " + t + " = " + i*t);
+
+
+            }
+            System.out.println("----------");
+        }
+        // 디버깅 기능
+        /*
+            디버깅모드
+            코드 라인 좌측(라인 숫자 있는 부분)을 마우스 좌클릭
+            breakpoint가 생성된다.(빨간 동그라미)
+            다시 좌클하면 사라짐
+            breakpoint 생성 후 디버깅모드 실행시(shift + F9)
+            코드들이 위에서부터 실행되다가 breakpoint가 있는 지점에 멈춰서 대기
+
+            이후 하단 debug 탭의 step over(F8)를 실행하면
+            한단계씩 실행이 이루어진다.
+            코드를 한줄씩 실행해보면서 컴퓨터가 정확히 어디를 실행하고
+            그때마다 변수에 어떤 값이 담기고 있는지 확인할 때 사용
+
+            디버빙 모드 종료(ctrl + F2)
+         */
+
+        System.out.println("\n=========================\n");
+        //트리
+        //     *
+        //    **
+        //   ***
+        //  ****
+        // *****
+        // i = 0 _> 공백4칸 *1칸
+        // i = 1 _> 공백3칸 *2칸
+        // i = 2 _> 공백2칸 *3칸
 
 
 
+        for (int i = 0 ; i <5 ; i++){
+            String blk = "";
+            for (int k = 0; k < 4-i ; k++){
+                blk += " ";
+            }
+            String stars = "";
+            for (int t = 0; t < 1+i ; t++){
+                stars += "*";
+            }
+            System.out.println(blk + stars);
+        }
 
+        // 트리
+        //      *   0   +1
+        //     ***  1   +2
+        //    ***** 2   +3
+        //   *******    3   +4
+        //  *********   4   +5
 
+        for (int i = 0 ; i <5 ; i++){
+            String blk = "";
+            for (int k = 0; k < 4-i ; k++){
+                blk += " ";
+            }
+            String stars = "";
+            for (int t = 0; t < i+i+1 ; t++){
+                stars += "*";
 
-
-
-
+            }
+            System.out.println(blk + stars);
+        }
 
 
 

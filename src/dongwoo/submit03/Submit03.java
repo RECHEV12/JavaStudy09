@@ -19,7 +19,7 @@ public class Submit03 {
 
         String findWally = "윌리울리일리울리울리일리월리일리윌리월리울리일리일리월리일리윌리일리윌리일리월리월리윌리울리윌리울리일리울리울리윌리일리";
         int wally = 0;
-        for (int i = 0 ; i < findWally.length() - 2 ; i++){
+        for (int i = 0 ; i < findWally.length() - 1 ; i++){
             String walo = findWally.substring(i , i+2);
             if (walo.equals("월리")){
                 wally += 1;
@@ -31,7 +31,7 @@ public class Submit03 {
 
         String stars = "*****";
         for (int i = 0 ; i < stars.length() ; i++){
-            String starsAn= stars.substring(0,5-i);
+            String starsAn= stars.substring(0,5-i); // stars.substring(i); = stars.substring(i, 5);
             System.out.println(starsAn);
         }
 
