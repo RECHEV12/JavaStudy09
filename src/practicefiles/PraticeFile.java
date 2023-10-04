@@ -70,10 +70,7 @@ public class PraticeFile {
             for (int k = 0; k < ran1 - 1 - i; k++) {
                 blk += " ";
             }
-            String stars = "";
-            for (int t = 0; t < i + 1; t++) {
-                stars = "*";
-            }
+            String stars = "*";
             String stars1 = "";
             for (int y = 1; y < i + 1; y++) {
                 stars1 = "*";
