@@ -150,7 +150,7 @@ public static int myAbs(int a){
 }
 
 public static void makeCard(String name, int korScore, int engScore, int mathScore){
-        double avg = ((double)(korScore + engScore +mathScore) / 3);
+        double avg = myRound(((double)(korScore + engScore +mathScore) / 3), 3);
         // 소수점 셋째자리에서 반올림 하여 둘째자리에서 자르기
         // Math.round는 첫째자리에서 반올림한 정수값을 리턴
         // 반올림 메소드 myRound()를 만들어보기
