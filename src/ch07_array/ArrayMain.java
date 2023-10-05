@@ -59,7 +59,7 @@ public class ArrayMain {
 
         printArray(seoyugi);
 
-
+        // 자바에서 배열은 직접적으로 사용해서 만들어 쓰기에는 배열의 크기가 고정되어서 불편해서 안씀
 
 
 
