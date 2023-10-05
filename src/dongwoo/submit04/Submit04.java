@@ -24,39 +24,40 @@ public class Submit04 {
                 break;
 
             }
-            else if (Integer.parseInt(floorSelect) <= 10)
+            int floorNum = Integer.parseInt(floorSelect);
+            if (floorNum <= 10)
             {
 
-                int eleA_mi = eleA - Integer.parseInt(floorSelect);
-                int eleB_mi = eleB - Integer.parseInt(floorSelect);
+                int eleA_mi = eleA - floorNum;
+                int eleB_mi = eleB - floorNum;
 
                 if (Math.abs(eleA_mi) < Math.abs(eleB_mi))
                 {
                     System.out.println(eleA + "층에서 엘리베이터를 호출합니다");
-                    System.out.println("승강기 A가 " + Integer.parseInt(floorSelect) + "층으로 이동하였습니다.");
-                    eleA = Integer.parseInt(floorSelect);
+                    System.out.println("승강기 A가 " + floorNum + "층으로 이동하였습니다.");
+                    eleA = floorNum;
 
                 }
                 else if (Math.abs(eleA_mi) > Math.abs(eleB_mi))
                 {
                     System.out.println(eleB + "층에서 엘리베이터를 호출합니다");
-                    System.out.println("승강기 B가 " + Integer.parseInt(floorSelect) + "층으로 이동하였습니다.");
-                    eleB = Integer.parseInt(floorSelect);
+                    System.out.println("승강기 B가 " + floorNum + "층으로 이동하였습니다.");
+                    eleB = floorNum;
 
                 }
-                else if (Math.abs(eleA_mi) == Math.abs(eleB_mi))
+                else
                 {
                     if (eleA > eleB)
                     {
                         System.out.println(eleA + "층에서 엘리베이터를 호출합니다");
-                        System.out.println("승강기 A가 " + Integer.parseInt(floorSelect) + "층으로 이동하였습니다.");
-                        eleA = Integer.parseInt(floorSelect);
+                        System.out.println("승강기 A가 " + floorNum + "층으로 이동하였습니다.");
+                        eleA = floorNum;
                     }
                     else if (eleA < eleB)
                     {
                         System.out.println(eleB + "층에서 엘리베이터를 호출합니다");
-                        System.out.println("승강기 B가 " + Integer.parseInt(floorSelect) + "층으로 이동하였습니다.");
-                        eleB = Integer.parseInt(floorSelect);
+                        System.out.println("승강기 B가 " + floorNum + "층으로 이동하였습니다.");
+                        eleB = floorNum;
                     }
 
                 }

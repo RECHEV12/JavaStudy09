@@ -2,6 +2,7 @@ package dongwoo.submit03;
 
 public class Submit03 {
     public static void main(String[] args) {
+        //팩토리얼
         int qusOne = 1;
         for (int i = 1; i <= 10; i++) {
             qusOne *= i;
