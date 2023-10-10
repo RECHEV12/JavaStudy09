@@ -6,7 +6,7 @@ public class Submit05 {
 
         System.out.println(reverseString("로꾸꺼"));
 
-        System.out.println(makeBinary(16));
+        System.out.println(makeBinary(23));
 
      makeTriangle(5);
     }
@@ -22,7 +22,7 @@ public class Submit05 {
             String blk = "";
             String stars = "";
 
-            for (int k = 1; k < num-i ; k++){
+            for (int k = 0; k < num-1-i ; k++){
                 blk += " ";
             }
             for (int t = 0; t < (i*2)+1 ; t++){
