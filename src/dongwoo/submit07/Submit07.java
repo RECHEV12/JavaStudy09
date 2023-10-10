@@ -26,7 +26,7 @@ public class Submit07 {
             intList2.add(intList.get(i));
             for (int t = 0; t < intList2.size() - 1; t++) {
                 if (intList.get(i) == intList2.get(t)) {
-                    intList2.remove(t);
+                    intList2.remove(intList2.size() - 1);
                 }
             }
         }
