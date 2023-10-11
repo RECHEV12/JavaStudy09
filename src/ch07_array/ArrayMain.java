@@ -344,6 +344,11 @@ public class ArrayMain {
 
         System.out.println(threeDirArr[2][0][0]);
 
+
+
+
+
+
     }
 
     /**

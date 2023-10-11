@@ -6,17 +6,12 @@ import java.util.Collections;
 public class Submit07 {
     public static void main(String[] args) {
         ArrayList<Integer> intList = new ArrayList<>();
-        int count = 0;
-        while (true) {
-            int rand = (int) ((Math.random() * 20) + 1);
-            if (rand >= 10) {
-                intList.add(rand);
-                count++;
-            }
-            if (count == 10) {
-                break;
-            }
+
+        for (int i = 0 ; i < 10 ; i ++){
+            int rand = (int) ((Math.random() * 11) + 10);
+            intList.add(rand);
         }
+
         // 1차 10개 숫자 랜덤 지정
         System.out.println(intList);
 
@@ -30,6 +25,19 @@ public class Submit07 {
                 }
             }
         }
+
+//        또 다른 정답
+//        for (int i = 0; i < intList.size(); i++) {
+//            if (intList2.contains(intList.get(i)) == false){
+//                intList2.add(intList.get(i));
+//            }
+//        }
+//
+
+
+
+
+
 
         // 중복 제거 올김
         System.out.println(intList2);
@@ -72,7 +80,7 @@ public class Submit07 {
 
 
         ArrayList<String> allWant = new ArrayList<>();
-        allWant = wifeWant;
+        allWant.addAll(wifeWant);
 
         for (int i = 0; i < husbandWant.size(); i++) {
             allWant.add(husbandWant.get(i));

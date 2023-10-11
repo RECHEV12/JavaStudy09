@@ -1,9 +1,9 @@
 package ch08_collection;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
+import java.util.function.Consumer;
+
+import static ch07_array.ArrayMain.printArray;
 
 public class CollectionList {
     public static void main(String[] args) {
@@ -135,6 +135,86 @@ public class CollectionList {
         System.out.println(intList);
 
 
+        //정렬(알고리즘)
+        System.out.println("\n===========================\n");
+
+        int[] intArreee = {3, 5, 8, 2, 4, 1};
+        ArrayList<Integer> numList = new ArrayList<>(Arrays.asList(3, 5, 8, 4, 1, 2));
+        System.out.println(numList);
+        for (int t = 0 ; t <numList.size()-1 ; t++){
+            for (int i = 0 ; i<numList.size() - 1 ; i++){
+                if (numList.get(i) > numList.get(i+1)) {
+                    int tmp = numList.get(i);
+                    numList.set(i, numList.get(i+1));
+                    numList.set(i+1, tmp);
+                }
+            }
+        }
+        System.out.println(numList);
+
+        System.out.println("\n===========================\n");
+
+        // 리스트의 복사
+        System.out.println(students);
+
+        ArrayList<String> copyStu = students;
+
+        System.out.println(students);
+        System.out.println(copyStu);
+        copyStu.add("6. 민재");
+        System.out.println(copyStu);
+        System.out.println(students);
+
+        ArrayList<String> copyList = new ArrayList<>();
+        // 모든 요소 카피리스트에 담김
+        // 리스트 복사 1번방식
+        copyList.addAll(students);
+
+        System.out.println(copyList);
+        copyList.add("7. 동우");
+        System.out.println(copyList);
+        System.out.println(students);
+
+        // 리스트 복사 2번 방식
+        ArrayList<String> copyList2 = new ArrayList<>(students);
+
+        // 리스트 복사 3번 방식
+        ArrayList<String> copyList3 = new ArrayList<>();
+        for (int i = 0 ; i < students.size() ; i++){
+            copyList3.add(students.get(i));
+        }
+
+        System.out.println("\n===========================\n");
+
+        // advanced for 향상된 for문
+        //(특정 프로그래밍 언어에서는 foreach문이라고 한다)
+        for (int i = 0 ; i < students.size() ; i++){
+            System.out.println(students.get(i));
+        }
+
+        for (String stu : students){
+            System.out.println(stu);
+        }
+
+        // 인덱스가 존재하는 List에서는 향상된 for문이 그렇게 메리트가 없다. 약간의 코드압축 메리트
+        System.out.println("\n===========================\n");
+        // 자바의 forEach문
+        students.forEach(new Consumer<String>(){
+
+            @Override
+            public void accept(String s) {
+                System.out.println(s);
+            }
+        });
+            //->같은 기호 사용 람다식
+        // 자바 스크립트는 => 사영
+        students.forEach(s -> System.out.println(s));
+
+        //명령어가 2줄 이상인 경우 중괄호 사용
+        students.forEach(s ->{
+                System.out.println(s);
+                System.out.println(s);}
+        );
 
 
 
