@@ -1,5 +1,7 @@
 package ch09_class.nextit;
 
+import ch09_class.school.Student;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -249,9 +251,10 @@ public class NextitMain {
         });
 
 
-        for (int i = 0 ; i < stuList.size() ; i ++ ){
-            System.out.println((i+1) + "등. " + stuList.get(i));
-        }
+        Student naruto = new Student();
+
+
+
 
 
     }
