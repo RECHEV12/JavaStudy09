@@ -31,7 +31,7 @@ public class ProductMain {
         for (int i = 0 ; i < prodList.size() ; i++){
             System.out.println(prodList.get(i));
         }
-
+        System.out.println("\n===============\n");
         for (int i = 0 ; i < prodList.size() ; i ++){
             if (prodList.get(i).getName().equals("TV")){
                 System.out.println(prodList.indexOf(prodList.get(i)));
