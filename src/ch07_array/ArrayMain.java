@@ -23,7 +23,7 @@ public class ArrayMain {
 
         // 배열 안에 담겨 있는 값을 요소(element)라고 함
         // 배열 내 요소 확인 = 인덱스
-        System.out.println(seoyugi[0]); //배열 내 인덱스 0번 값 확인(인덱싱)
+        System.out.println(seoyugi[0]); //배열 내 요스 0번 값 확인(인덱싱)
 
         // 크기만 선언되고 값을 별도로 부여하지 않은 배열 내에는
         // 해당 타입의 기본 값이 들어있다.
