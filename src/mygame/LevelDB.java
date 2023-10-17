@@ -22,11 +22,11 @@ public class LevelDB {
         }
         return nextLevel;
     }
-
+    private static LevelDB instance = new LevelDB();
     /**
      * 레벨1~40의 경험치 기록
      */
-    public LevelDB() {
+    private  LevelDB() {
         int a = 1;
         int b = 10;
         while (true) {
@@ -63,6 +63,9 @@ public class LevelDB {
         }
     }
 
+    public static LevelDB getInstance() {
+        return instance;
+    }
 
     public LevelDB(ArrayList<Level> levelArrayList) {
         this.levelArrayList = levelArrayList;

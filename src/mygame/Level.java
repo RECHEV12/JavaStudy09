@@ -3,8 +3,8 @@ package mygame;
 import java.util.Arrays;
 
 public class Level {
-    int levelNow; /*현재 레벨*/
-    int levelExp; /*레벨 다음 레벨업에 필요한 경험치*/
+   private int levelNow; /*현재 레벨*/
+    private int levelExp; /*레벨 다음 레벨업에 필요한 경험치*/
 
     public Level() {
     }

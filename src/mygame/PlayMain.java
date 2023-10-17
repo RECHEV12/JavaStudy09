@@ -7,7 +7,7 @@ public class PlayMain {
         Scanner scan = new Scanner(System.in);
         Class user = new Class();
 
-        LevelDB levelDB = new LevelDB();
+        LevelDB levelDB = LevelDB.getInstance();
 
         while (true) {
             System.out.println("===========================================");
@@ -41,7 +41,7 @@ public class PlayMain {
         System.out.println("STR은 힘, DEX는 회피율, INT는 지능, LUK는 운을 나타내며");
         System.out.println("LUK를 제외한 스탯은 스킬과 기본공격 대미지에 영향을 줍니다.");
         System.out.println("LUK을 100 달성 시, 모든 공격이 치명타가 됩니다.");
-        //todo 구현기능 : 장비, 몬스터, 대미지 계산식, 아이템 드롭(무기, 회복약), 아이템 사용, 각종 상태이상,
+        //todo 구현기능 : 장비, 몬스터, 대미지 계산식, 아이템 드롭(무기, 회복약), 아이템 사용, 각종 상태이상, 필드 증가
         while (true) {
             System.out.println("※※태초 마을※※");
             System.out.println("※※행동을 선택해주세요※※");
