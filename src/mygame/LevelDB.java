@@ -7,6 +7,12 @@ import java.util.Arrays;
 public class LevelDB {
     private ArrayList<Level> levelArrayList = new ArrayList<>();
 
+
+    /**
+     * 다음 레벨에 필요한 경험치량 가져오는 메소드
+     * @param userLv 현재 유저 레벨
+     * @return 현재 레벨에 필요한 경험치량
+     */
     public int LevelUP(int userLv) {
         int nextLevel = 0;
         for (Level lv : levelArrayList) {
@@ -17,7 +23,9 @@ public class LevelDB {
         return nextLevel;
     }
 
-
+    /**
+     * 레벨1~40의 경험치 기록
+     */
     public LevelDB() {
         int a = 1;
         int b = 10;
@@ -54,6 +62,7 @@ public class LevelDB {
             }
         }
     }
+
 
     public LevelDB(ArrayList<Level> levelArrayList) {
         this.levelArrayList = levelArrayList;

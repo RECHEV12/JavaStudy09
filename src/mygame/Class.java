@@ -13,42 +13,52 @@ public class Class {
     private int statHP; /* 캐릭터 체력*/
     private int statMP; /*캐릭터 마나*/
 
-    LevelDB classLv = new LevelDB();
-
-
+    /**
+     * 최종 레벨업 기믹
+     *
+     * @param user    유저 정보
+     * @param levelDB 레벨 리스트
+     */
     public static void levelUP(Class user, LevelDB levelDB) {
         while (user.getExp() >= user.getNextExp() && user.getLv() < 40) {
             if (user.getExp() >= user.getNextExp()) {
-                if (user.getPlayerClass().equals("전사")) {
+                if (user.getPlayerClass().equals("전사") ||
+                        user.getPlayerClass().equals("성검사") ||
+                        user.getPlayerClass().equals("마검사")) {
                     user.setStatSTR(user.getStatSTR() + 3);
                     user.setStatDEX(user.getStatDEX() + 2);
                     user.setStatINT(user.getStatINT() + 1);
-                    user.setStatHP(user.getStatHP() + 5);
-                    user.setStatMP(user.getStatMP() + 2);
+                    user.setStatHP(user.getStatHP() + 10);
+                    user.setStatMP(user.getStatMP() + 8);
                     user.setStatLUK(user.getStatLUK() + 1);
 
-                } else if (user.getPlayerClass().equals("마법사")) {
+                } else if (user.getPlayerClass().equals("마법사") ||
+                        user.getPlayerClass().equals("화염법사") ||
+                        user.getPlayerClass().equals("냉기법사")) {
                     user.setStatSTR(user.getStatSTR() + 1);
-                    user.setStatDEX(user.getStatDEX() + 2);
-                    user.setStatINT(user.getStatINT() + 3);
-                    user.setStatHP(user.getStatHP() + 3);
-                    user.setStatMP(user.getStatMP() + 4);
+                    user.setStatDEX(user.getStatDEX() + 1);
+                    user.setStatINT(user.getStatINT() + 4);
+                    user.setStatHP(user.getStatHP() + 6);
+                    user.setStatMP(user.getStatMP() + 12);
                     user.setStatLUK(user.getStatLUK() + 1);
                 }
-
-                user.setExp(user.getExp() - user.getNextExp());
-                user.setLv(user.getLv() + 1);
-                user.setNextExp(levelDB.LevelUP(user.getLv()));
-                System.out.println("레벨 업!! 레벨이 " + user.getLv() + "이 되었다!!");
-
             }
+
+            user.setExp(user.getExp() - user.getNextExp());
+            user.setLv(user.getLv() + 1);
+            user.setNextExp(levelDB.LevelUP(user.getLv()));
+            System.out.println("레벨 업!! 레벨이 " + user.getLv() + "이 되었다!!");
+
         }
     }
+
+
 
 
     public Class() {
     }
 
+    // 초기 캐릭터 설정
     private static Class warrior = new Class("전사", "", 1, 0, 10, 12, 10, 7, 5, 17, 9);
     private static Class magician = new Class("마법사", "", 1, 0, 10, 7, 10, 12, 5, 14, 12);
 
