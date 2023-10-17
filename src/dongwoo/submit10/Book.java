@@ -1,20 +1,20 @@
 package dongwoo.submit10;
 
-public class book {
+public class Book {
     private int no; /*도서 번호*/
     private String title; /*도서 제목*/
     private boolean borrow; /*대여 여부*/
 
-    public book() {
+    public Book() {
     }
 
-    public book(int no, String title, boolean borrow) {
+    public Book(int no, String title, boolean borrow) {
         this.no = no;
         this.title = title;
         this.borrow = borrow;
     }
 
-    public book(int no, String title) {
+    public Book(int no, String title) {
         this(no, title, false);
     }
 
