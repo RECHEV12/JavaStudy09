@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class LevelDB {
-    private ArrayList<Level> levelArrayList = new ArrayList<>();
+    private ArrayList<Level> levelArrayList = new ArrayList<>(); /*레벨 담는 리스트*/
 
 
     /**

@@ -16,66 +16,6 @@ public class Skill {
     }
 
 
-    public static int getUserDamage(Class user, Skill skr, Monster mob, double critical) {
-        int strDamage = (user.getStatSTR() * skr.getPerStr());
-        int intDamage = (user.getStatINT() * skr.getPerInt());
-
-        double typeCritical = 1;
-        if ((skr.getSkillType().equals("참격") && mob.getMonsterType().equals("참격약점")) ||
-                (skr.getSkillType().equals("마법") && mob.getMonsterType().equals("마법약점"))) {
-            typeCritical = 1.2;
-        }
-
-        double totalDamage = ((strDamage + intDamage) * (typeCritical)) * (critical);
-
-        return (int) UtillMethod.myRound(totalDamage, 1);
-
-    }
-
-    public static double criticalReturn(Class user) {
-        double crtical = 0;
-        if (user.getStatLUK() >= 100) {
-            crtical = 1.5;
-        } else {
-            double retouch = ((double) user.getStatDEX() / 5);
-            int randNum = UtillMethod.makeRandom(1, 100);
-            int num = (int) UtillMethod.myRound((5 + retouch), 1);
-            if (randNum >= 1 && randNum <= num) {
-                crtical = 1.5;
-            } else {
-                crtical = 1;
-            }
-        }
-
-        return crtical;
-
-    }
-
-
-    public static int getMonsterDamage(Class user, Skill skr, Monster mob) {
-        int strDamage = (mob.getMonsterATK() * skr.getPerStr());
-
-        int totalDamage = strDamage;
-
-        return totalDamage;
-    }
-
-
-    public static Skill getMonsterSkill(Monster mob) {
-        // 스킬 인덱스를 가져오기
-        int index = UtillMethod.makeRandom(0, mob.getMonsterSkillList().size() - 1);
-
-        Skill mobSkill = mob.getMonsterSkillList().get(index);
-
-        return mobSkill;
-    }
-
-
-    public static int defDamage(Class user, Skill skr) {
-        int plus = (user.getStatDEX() * skr.getPerDex());
-        return plus;
-    }
-
 
     @Override
     public String toString() {

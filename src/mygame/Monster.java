@@ -3,7 +3,12 @@ package mygame;
 import java.util.ArrayList;
 
 public class Monster {
-
+    private int monsterGroup; /*몬스터 그룹*/
+    private int monsterNum; /*몬스터 번호*/
+    private String monsterName; /*몬스터 이름*/
+    private int monsterLv; /*몬스터 레벨*/
+    private String monsterType; /*몬스터 약점 타입*/
+    private int monsterATK; /*몬스터 공격력*/
 
     public int getMonsterGroup() {
         return monsterGroup;
@@ -24,25 +29,10 @@ public class Monster {
         this.monsterHP = monsterHP;
     }
 
-    private int monsterGroup;
-    private int monsterNum;
-    private String monsterName;
-    private int monsterLv;
-    private String monsterType;
-    private int monsterATK;
 
     @Override
     public String toString() {
-        return "Monster{" +
-                "monsterGroup=" + monsterGroup +
-                ", monsterNum=" + monsterNum +
-                ", monsterName='" + monsterName + '\'' +
-                ", monsterLv=" + monsterLv +
-                ", monsterType='" + monsterType + '\'' +
-                ", monsterATK=" + monsterATK +
-                ", monsterSkillList=" + monsterSkillList +
-                ", monsterHP=" + monsterHP +
-                '}';
+        return "Monster{" + "monsterGroup=" + monsterGroup + ", monsterNum=" + monsterNum + ", monsterName='" + monsterName + '\'' + ", monsterLv=" + monsterLv + ", monsterType='" + monsterType + '\'' + ", monsterATK=" + monsterATK + ", monsterSkillList=" + monsterSkillList + ", monsterHP=" + monsterHP + '}';
     }
 
     public ArrayList<Skill> getMonsterSkillList() {
@@ -78,13 +68,11 @@ public class Monster {
 
     public void battleMonsterData(Monster a, double b) {
         if (b == 1.0) {
-            System.out.println(a.getMonsterName() + " Lv." + a.getMonsterLv() + "\n" +
-                    "❤️ : " + a.getMonsterHP());
+            System.out.println(a.getMonsterName() + " Lv." + a.getMonsterLv() + "\n" + "❤️ : " + a.getMonsterHP());
 
         }
         if (b == 1.5) {
-            System.out.println("🌟 " + a.getMonsterName() + " - Lv." + a.getMonsterLv() + "\n" +
-                    "❤\uFE0F : " + a.getMonsterHP());
+            System.out.println("🌟 " + a.getMonsterName() + " - Lv." + a.getMonsterLv() + "\n" + "❤\uFE0F : " + a.getMonsterHP());
         }
     }
 
@@ -98,6 +86,13 @@ public class Monster {
         int exp = (int) UtillMethod.myRound((a.getMonsterLv() + a.getMonsterGroup() * b), 1);
         return exp;
     }
+
+    public int getMoney(Monster a, double b) {
+        int money = (int) UtillMethod.myRound((a.getMonsterLv() * a.getMonsterGroup() * b) * 50, 1);
+        return money;
+    }
+
+
 
 
     public int getMonsterHP() {

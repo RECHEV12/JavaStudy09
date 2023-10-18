@@ -137,6 +137,8 @@ public class PraticeFile {
 //                System.out.println("\n===========================\n");
 //            }
 
+        System.out.println(0+1);
+
             System.out.println("\n===========================\n");
 
             HashMap<String, String> infoMapa = new HashMap<>();
