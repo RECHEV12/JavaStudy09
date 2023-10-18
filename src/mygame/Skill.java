@@ -4,9 +4,77 @@ public class Skill {
     private String skillName;
     private String skillType;
     private String skillInfo;
+    private int learnLevel;
+    private String classType;
+
+    @Override
+    public String toString() {
+        return "Skill{" +
+                "skillName='" + skillName + '\'' +
+                ", skillType='" + skillType + '\'' +
+                ", skillInfo='" + skillInfo + '\'' +
+                ", learnLevel=" + learnLevel +
+                ", classType='" + classType + '\'' +
+                ", useMp=" + useMp +
+                ", perStr=" + perStr +
+                ", perInt=" + perInt +
+                ", perDex=" + perDex +
+                '}';
+    }
+
+    public int getLearnLevel() {
+        return learnLevel;
+    }
+
+    public void setLearnLevel(int learnLevel) {
+        this.learnLevel = learnLevel;
+    }
+
+    public Skill(String skillName, String skillType, String skillInfo, int learnLevel, String classType, int useMp, int perStr, int perInt, int perDex) {
+        this.skillName = skillName;
+        this.skillType = skillType;
+        this.skillInfo = skillInfo;
+        this.learnLevel = learnLevel;
+        this.classType = classType;
+        this.useMp = useMp;
+        this.perStr = perStr;
+        this.perInt = perInt;
+        this.perDex = perDex;
+    }
+
+
+    public String getClassType() {
+        return classType;
+    }
+
+    public void setClassType(String classType) {
+        this.classType = classType;
+    }
+
+
+
     private int useMp;
     private int perStr;
     private int perInt;
+    private int perDex;
+
+    public int getPerDex() {
+        return perDex;
+    }
+
+    public void setPerDex(int perDex) {
+        this.perDex = perDex;
+    }
+
+    public Skill(String skillName, String skillType, String skillInfo, int useMp, int perStr, int perInt, int perDex) {
+        this.skillName = skillName;
+        this.skillType = skillType;
+        this.skillInfo = skillInfo;
+        this.useMp = useMp;
+        this.perStr = perStr;
+        this.perInt = perInt;
+        this.perDex = perDex;
+    }
 
 
     public Skill() {
@@ -19,18 +87,6 @@ public class Skill {
         this.useMp = useMp;
         this.perStr = perStr;
         this.perInt = perInt;
-    }
-
-    @Override
-    public String toString() {
-        return "Skill{" +
-                "skillName='" + skillName + '\'' +
-                ", skillType='" + skillType + '\'' +
-                ", skillInfo='" + skillInfo + '\'' +
-                ", useMp=" + useMp +
-                ", perStr=" + perStr +
-                ", perInt=" + perInt +
-                '}';
     }
 
     public String getSkillName() {

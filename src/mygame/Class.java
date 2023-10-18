@@ -1,5 +1,7 @@
 package mygame;
 
+import java.util.ArrayList;
+
 public class Class {
     private String playerClass; /*캐릭터 직업*/
     private String playerName; /*플레이어 이름*/
@@ -12,6 +14,34 @@ public class Class {
     private int statLUK; /*캐릭터 운*/
     private int statHP; /* 캐릭터 체력*/
     private int statMP; /*캐릭터 마나*/
+    public ArrayList<Skill> playerSkillList = new ArrayList<>();
+
+
+    @Override
+    public String toString() {
+        return "Class{" +
+                "playerClass='" + playerClass + '\'' +
+                ", playerName='" + playerName + '\'' +
+                ", lv=" + lv +
+                ", exp=" + exp +
+                ", nextExp=" + nextExp +
+                ", statSTR=" + statSTR +
+                ", statDEX=" + statDEX +
+                ", statINT=" + statINT +
+                ", statLUK=" + statLUK +
+                ", statHP=" + statHP +
+                ", statMP=" + statMP +
+                ", playerSkillList=" + playerSkillList +
+                '}';
+    }
+
+    public ArrayList<Skill> getPlayerSkillList() {
+        return playerSkillList;
+    }
+
+    public void setPlayerSkillList(ArrayList<Skill> playerSkillList) {
+        this.playerSkillList = playerSkillList;
+    }
 
     /**
      * 최종 레벨업 기믹
@@ -23,8 +53,7 @@ public class Class {
         while (user.getExp() >= user.getNextExp() && user.getLv() < 40) {
             if (user.getExp() >= user.getNextExp()) {
                 if (user.getPlayerClass().equals("전사") ||
-                        user.getPlayerClass().equals("성검사") ||
-                        user.getPlayerClass().equals("마검사")) {
+                        user.getPlayerClass().equals("용사")) {
                     user.setStatSTR(user.getStatSTR() + 3);
                     user.setStatDEX(user.getStatDEX() + 2);
                     user.setStatINT(user.getStatINT() + 1);
@@ -33,8 +62,7 @@ public class Class {
                     user.setStatLUK(user.getStatLUK() + 1);
 
                 } else if (user.getPlayerClass().equals("마법사") ||
-                        user.getPlayerClass().equals("화염법사") ||
-                        user.getPlayerClass().equals("냉기법사")) {
+                        user.getPlayerClass().equals("현자")) {
                     user.setStatSTR(user.getStatSTR() + 1);
                     user.setStatDEX(user.getStatDEX() + 1);
                     user.setStatINT(user.getStatINT() + 4);
@@ -83,27 +111,6 @@ public class Class {
         this.statLUK = statLUK;
         this.statHP = statHP;
         this.statMP = statMP;
-    }
-
-    @Override
-    public String toString() {
-        return
-                " ===================\n" +
-                        "| 직업 : " + playerClass +
-                        "\n| 이름 : " + playerName +
-                        "\n| 레벨 : " + lv +
-                        "\n| 현재 경험치 : " + exp +
-                        "\n| 필요 경험치 : " + nextExp +
-                        "\n" +
-                        "\n| HP : " + statHP +
-                        "\n| MP : " + statMP +
-                        "\n| STR : " + statSTR +
-                        "\n| DEX : " + statDEX +
-                        "\n| INT : " + statINT +
-                        "\n| LUK : " + statLUK +
-
-                        "\n ==================="
-                ;
     }
 
     public String getPlayerClass() {

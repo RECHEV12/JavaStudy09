@@ -26,8 +26,7 @@ public class LibraryMain {
                 libDB.returnBook(no);
 
             } else if (command == 2) {
-
-                // todo 책대여
+                
                 System.out.println("책 제목을 입력해 주세요");
                 System.out.print(">>> ");
                 String title = scan.nextLine();
