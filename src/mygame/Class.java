@@ -87,7 +87,7 @@ public class Class {
     }
 
     // 초기 캐릭터 설정
-    private static Class warrior = new Class("전사", "", 1, 0, 10, 12, 10, 7, 5, 17, 9);
+    private static Class warrior = new Class("전사", "", 1, 0, 10, 100, 10, 7, 5, 17, 9);
     private static Class magician = new Class("마법사", "", 1, 0, 10, 7, 10, 12, 5, 14, 12);
 
     public static Class getWarrior() {

@@ -19,11 +19,14 @@ public class UtilClass {
 
     /**
      * a~b사이의 랜덤 정수를 리턴하는 메소드
+     *
      * @param a 시작 숫자
      * @param b 끝 숫자
      * @return
      */
-    public static int makeRandom(int a, int b){
-        return (int)((Math.random() *(b-a+1)) + a);
+    public static int makeRandom(int a, int b) {
+        return (int) ((Math.random() * (b - a + 1)) + a);
     }
 }
+
+

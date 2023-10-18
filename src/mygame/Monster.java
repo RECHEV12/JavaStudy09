@@ -1,23 +1,14 @@
 package mygame;
 
+import java.util.ArrayList;
+
 public class Monster {
-    @Override
-    public String toString() {
-        return "Monster{" +
-                "monsterGroup=" + monsterGroup +
-                ", monsterNum=" + monsterNum +
-                ", monsterName='" + monsterName + '\'' +
-                ", monsterLv=" + monsterLv +
-                ", monsterType='" + monsterType + '\'' +
-                ", monsterATK=" + monsterATK +
-                ", monsterDEF=" + monsterDEF +
-                ", monsterHP=" + monsterHP +
-                '}';
-    }
+
 
     public int getMonsterGroup() {
         return monsterGroup;
     }
+
 
     public void setMonsterGroup(int monsterGroup) {
         this.monsterGroup = monsterGroup;
@@ -30,7 +21,6 @@ public class Monster {
         this.monsterLv = monsterLv;
         this.monsterType = monsterType;
         this.monsterATK = monsterATK;
-        this.monsterDEF = monsterDEF;
         this.monsterHP = monsterHP;
     }
 
@@ -40,17 +30,75 @@ public class Monster {
     private int monsterLv;
     private String monsterType;
     private int monsterATK;
-    private int monsterDEF;
 
-    public Monster(int monsterNum, String monsterName, int monsterLv, String monsterType, int monsterATK, int monsterDEF, int monsterHP) {
+    @Override
+    public String toString() {
+        return "Monster{" +
+                "monsterGroup=" + monsterGroup +
+                ", monsterNum=" + monsterNum +
+                ", monsterName='" + monsterName + '\'' +
+                ", monsterLv=" + monsterLv +
+                ", monsterType='" + monsterType + '\'' +
+                ", monsterATK=" + monsterATK +
+                ", monsterSkillList=" + monsterSkillList +
+                ", monsterHP=" + monsterHP +
+                '}';
+    }
+
+    public ArrayList<Skill> getMonsterSkillList() {
+        return monsterSkillList;
+    }
+
+    public void setMonsterSkillList(ArrayList<Skill> monsterSkillList) {
+        this.monsterSkillList = monsterSkillList;
+    }
+
+    public Monster(int monsterGroup, int monsterNum, String monsterName, int monsterLv, String monsterType, int monsterATK, ArrayList<Skill> monsterSkillList, int monsterHP) {
+        this.monsterGroup = monsterGroup;
         this.monsterNum = monsterNum;
         this.monsterName = monsterName;
         this.monsterLv = monsterLv;
         this.monsterType = monsterType;
         this.monsterATK = monsterATK;
-        this.monsterDEF = monsterDEF;
+        this.monsterSkillList = monsterSkillList;
         this.monsterHP = monsterHP;
     }
+
+    public ArrayList<Skill> monsterSkillList = new ArrayList<>();
+
+    public Monster(int monsterGroup, int monsterNum, String monsterName, int monsterLv, String monsterType, int monsterATK, int monsterHP) {
+        this.monsterGroup = monsterGroup;
+        this.monsterNum = monsterNum;
+        this.monsterName = monsterName;
+        this.monsterLv = monsterLv;
+        this.monsterType = monsterType;
+        this.monsterATK = monsterATK;
+        this.monsterHP = monsterHP;
+    }
+
+    public void battleMonsterData(Monster a, double b) {
+        if (b == 1.0) {
+            System.out.println(a.getMonsterName() + " Lv." + a.getMonsterLv() + "\n" +
+                    "❤️ : " + a.getMonsterHP());
+
+        }
+        if (b == 1.5) {
+            System.out.println("🌟 " + a.getMonsterName() + " - Lv." + a.getMonsterLv() + "\n" +
+                    "❤\uFE0F : " + a.getMonsterHP());
+        }
+    }
+
+
+    public void realBattle() {
+
+    }
+
+
+    public int getExp(Monster a, double b) {
+        int exp = (int) UtillMethod.myRound((a.getMonsterLv() + a.getMonsterGroup() * b), 1);
+        return exp;
+    }
+
 
     public int getMonsterHP() {
         return monsterHP;
@@ -71,7 +119,6 @@ public class Monster {
         this.monsterLv = monsterLv;
         this.monsterType = monsterType;
         this.monsterATK = monsterATK;
-        this.monsterDEF = monsterDEF;
     }
 
     public int getMonsterNum() {
@@ -114,12 +161,6 @@ public class Monster {
         this.monsterATK = monsterATK;
     }
 
-    public int getMonsterDEF() {
-        return monsterDEF;
-    }
 
-    public void setMonsterDEF(int monsterDEF) {
-        this.monsterDEF = monsterDEF;
-    }
 }
 
