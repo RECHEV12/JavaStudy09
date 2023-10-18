@@ -282,14 +282,13 @@ public class PlayMain {
                                                 //경험치 추가 기믹
                                                 if (user.getLv() < 40) {
                                                     int exp = a.getExp(a, rare);
+                                                    user.setExp(user.getExp() + exp + 1000);
                                                     System.out.println("경험치 " + exp + " 획득");
-                                                    user.setExp(user.getExp() + exp);
                                                 }
 
                                                 //레벨업 기믹
                                                 if (user.getExp() >= user.getNextExp()) {
                                                     Class.levelUP(user, levelDB);
-                                                    UtillMethod.userSetSkill(user);
                                                 }
                                                 break;
                                             } else {

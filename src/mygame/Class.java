@@ -14,8 +14,24 @@ public class Class {
     private int statLUK; /*캐릭터 운*/
     private int statHP; /* 캐릭터 체력*/
     private int statMP; /*캐릭터 마나*/
+    private int extraStat;
     public ArrayList<Skill> playerSkillList = new ArrayList<>();
 
+
+    public Class(String playerClass, String playerName, int lv, int exp, int nextExp, int statSTR, int statDEX, int statINT, int statLUK, int statHP, int statMP, int extraStat) {
+        this.playerClass = playerClass;
+        this.playerName = playerName;
+        this.lv = lv;
+        this.exp = exp;
+        this.nextExp = nextExp;
+        this.statSTR = statSTR;
+        this.statDEX = statDEX;
+        this.statINT = statINT;
+        this.statLUK = statLUK;
+        this.statHP = statHP;
+        this.statMP = statMP;
+        this.extraStat = extraStat;
+    }
 
     @Override
     public String toString() {
@@ -31,9 +47,21 @@ public class Class {
                 ", statLUK=" + statLUK +
                 ", statHP=" + statHP +
                 ", statMP=" + statMP +
+                ", extraStat=" + extraStat +
                 ", playerSkillList=" + playerSkillList +
                 '}';
     }
+
+    public int getExtraStat() {
+        return extraStat;
+    }
+
+    public void setExtraStat(int extraStat) {
+        this.extraStat = extraStat;
+    }
+
+
+
 
     public ArrayList<Skill> getPlayerSkillList() {
         return playerSkillList;
@@ -60,6 +88,7 @@ public class Class {
                     user.setStatHP(user.getStatHP() + 10);
                     user.setStatMP(user.getStatMP() + 8);
                     user.setStatLUK(user.getStatLUK() + 1);
+                    user.setExtraStat(user.getExtraStat() + 4);
 
                 } else if (user.getPlayerClass().equals("마법사") ||
                         user.getPlayerClass().equals("현자")) {
@@ -69,6 +98,7 @@ public class Class {
                     user.setStatHP(user.getStatHP() + 6);
                     user.setStatMP(user.getStatMP() + 12);
                     user.setStatLUK(user.getStatLUK() + 1);
+                    user.setExtraStat(user.getExtraStat() + 4);
                 }
             }
 
@@ -76,6 +106,7 @@ public class Class {
             user.setLv(user.getLv() + 1);
             user.setNextExp(levelDB.LevelUP(user.getLv()));
             System.out.println("레벨 업!! 레벨이 " + user.getLv() + "이 되었다!!");
+            UtillMethod.userSetSkill(user);
 
         }
     }
@@ -87,8 +118,8 @@ public class Class {
     }
 
     // 초기 캐릭터 설정
-    private static Class warrior = new Class("전사", "", 1, 0, 10, 100, 10, 7, 5, 17, 9);
-    private static Class magician = new Class("마법사", "", 1, 0, 10, 7, 10, 12, 5, 14, 12);
+    private static Class warrior = new Class("전사", "", 1, 0, 10, 100, 10, 7, 5, 17, 9,0);
+    private static Class magician = new Class("마법사", "", 1, 0, 10, 7, 10, 12, 5, 14, 12, 0);
 
     public static Class getWarrior() {
         return warrior;

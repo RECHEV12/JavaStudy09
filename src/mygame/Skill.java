@@ -7,56 +7,55 @@ public class Skill {
     private int learnLevel;
     private String classType;
 
-    public static void printSkillList(Class user){
-        for (Skill sk : user.getPlayerSkillList()){
+    public static void printSkillList(Class user) {
+        for (Skill sk : user.getPlayerSkillList()) {
             System.out.println(
-                   " ⚔\uFE0F " + "No. " + (user.playerSkillList.indexOf(sk)+1) + " - " + sk.getSkillName()
+                    " ⚔\uFE0F " + "No. " + (user.playerSkillList.indexOf(sk) + 1) + " - " + sk.getSkillName()
             );
         }
     }
 
 
-    public static int getUserDamage(Class user, Skill skr, Monster mob, double critical){
+    public static int getUserDamage(Class user, Skill skr, Monster mob, double critical) {
         int strDamage = (user.getStatSTR() * skr.getPerStr());
         int intDamage = (user.getStatINT() * skr.getPerInt());
 
         double typeCritical = 1;
         if ((skr.getSkillType().equals("참격") && mob.getMonsterType().equals("참격약점")) ||
-            (skr.getSkillType().equals("마법") && mob.getMonsterType().equals("마법약점"))) {
+                (skr.getSkillType().equals("마법") && mob.getMonsterType().equals("마법약점"))) {
             typeCritical = 1.2;
         }
 
-        double totalDamage = ((strDamage + intDamage)*(typeCritical))*(critical);
+        double totalDamage = ((strDamage + intDamage) * (typeCritical)) * (critical);
 
-        return(int)UtillMethod.myRound(totalDamage, 1);
+        return (int) UtillMethod.myRound(totalDamage, 1);
 
     }
 
-    public static double criticalReturn(Class user){
+    public static double criticalReturn(Class user) {
         double crtical = 0;
-        if (user.getStatLUK() >= 100){
+        if (user.getStatLUK() >= 100) {
             crtical = 1.5;
-        }else {
-        double retouch = ((double) user.getStatDEX() /5);
-        int randNum = UtillMethod.makeRandom(1,100);
-        int num = (int)UtillMethod.myRound((5 + retouch), 1);
-                if(randNum >= 1 && randNum <= num){
-                    crtical = 1.5;
-                }else {
-                    crtical = 1;
-                }
+        } else {
+            double retouch = ((double) user.getStatDEX() / 5);
+            int randNum = UtillMethod.makeRandom(1, 100);
+            int num = (int) UtillMethod.myRound((5 + retouch), 1);
+            if (randNum >= 1 && randNum <= num) {
+                crtical = 1.5;
+            } else {
+                crtical = 1;
+            }
         }
 
-return crtical;
+        return crtical;
 
     }
 
 
-
-    public static int getMonsterDamage(Class user, Skill skr, Monster mob){
+    public static int getMonsterDamage(Class user, Skill skr, Monster mob) {
         int strDamage = (mob.getMonsterATK() * skr.getPerStr());
 
-      int totalDamage = strDamage;
+        int totalDamage = strDamage;
 
         return totalDamage;
     }
@@ -64,7 +63,7 @@ return crtical;
 
     public static Skill getMonsterSkill(Monster mob) {
         // 스킬 인덱스를 가져오기
-        int index = UtillMethod.makeRandom(0, mob.getMonsterSkillList().size()-1);
+        int index = UtillMethod.makeRandom(0, mob.getMonsterSkillList().size() - 1);
 
         Skill mobSkill = mob.getMonsterSkillList().get(index);
 
@@ -72,15 +71,10 @@ return crtical;
     }
 
 
-    public static int defDamage(Class user, Skill skr){
+    public static int defDamage(Class user, Skill skr) {
         int plus = (user.getStatDEX() * skr.getPerDex());
         return plus;
     }
-
-
-
-
-
 
 
     @Override
@@ -126,7 +120,6 @@ return crtical;
     public void setClassType(String classType) {
         this.classType = classType;
     }
-
 
 
     private int useMp;
