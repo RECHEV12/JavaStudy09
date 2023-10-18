@@ -95,20 +95,20 @@ public class Class {
                 System.out.println("아이템이 존재하지 않습니다.");
             } else {
                 if (inputNum == 1) {
-                    for (Item item : Class.getWarrior().itemsList) {
+                    for (Item item : Class.getMagician().itemsList) {
                         if (item.getItemType().contains("무기")) {
                             System.out.println("No." + Class.getMagician().itemsList.indexOf(item) + item);
                         }
 
                     }
                 } else if (inputNum == 2) {
-                    for (Item item : Class.getWarrior().itemsList) {
+                    for (Item item : Class.getMagician().itemsList) {
                         if (item.getItemType().contains("방어구")) {
                             System.out.println("No." + Class.getMagician().itemsList.indexOf(item) + item);
                         }
                     }
                 } else if (inputNum == 3) {
-                    for (Item item : Class.getWarrior().itemsList) {
+                    for (Item item : Class.getMagician().itemsList) {
 
                         if (item.getItemType().contains("포션")) {
                             System.out.println("No." + Class.getMagician().itemsList.indexOf(item) + item);
@@ -377,7 +377,7 @@ public class Class {
 
     // 초기 캐릭터 설정
     private static Class warrior = new Class("전사", "", 1, 0, 10, 1200, 10, 7, 5, 17, 17, 9, 9, 0, 1000);
-    private static Class magician = new Class("마법사", "", 1, 0, 10, 7, 10, 12, 5, 14, 14, 12, 12, 0, 1000);
+    private static Class magician = new Class("마법사", "", 1, 0, 10, 700, 100, 1002, 5, 14, 14, 12, 12, 0, 1000);
 
     public static Class getWarrior() {
         return warrior;

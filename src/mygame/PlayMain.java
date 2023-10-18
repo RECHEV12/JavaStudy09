@@ -73,7 +73,7 @@ public class PlayMain {
         System.out.println("STR은 힘, DEX는 회피율 및 치명타, INT는 지능, LUK는 운을 나타내며");
         System.out.println("LUK를 제외한 스탯은 스킬과 기본공격 대미지에 영향을 줍니다.");
         System.out.println("LUK을 100 달성 시, 모든 공격이 치명타가 됩니다.");
-        //todo, 상점, 현재 착용중인 장비 보여주기, 장비판매
+        //todo, 상점, 현재 착용중인 장비 보여주기, 장비판매 , 회피공식(몹 레벨에 따라 피하기 어려워짐)
         outer:
         while (true) {
             System.out.println("※※ 거점 : 마을 ※※");
@@ -341,6 +341,7 @@ public class PlayMain {
                                 System.out.println(user);
 
                             } else if (battleCommand == 3) {
+                                System.out.println(user.getItemsList());
                                 System.out.println("※※아이템 카테고리를 선택해주세요※※");
                                 while (true) {
                                     System.out.println("1. 무기 | 2. 방어구 | 3. 포션 | 4. 이전으로");
@@ -392,6 +393,7 @@ public class PlayMain {
                         System.out.println(user);
 
                     } else if (command2 == 3) {
+                        System.out.println(user.getItemsList());
                         System.out.println("※※아이템 카테고리를 선택해주세요※※");
                         while (true) {
                             System.out.println("1. 무기 | 2. 방어구 | 3. 포션 | 4. 이전으로");
@@ -447,7 +449,7 @@ public class PlayMain {
                 System.out.println(user);
 
             } else if (command == 3) {
-
+                System.out.println(user.getItemsList());
                 System.out.println("※※아이템 카테고리를 선택해주세요※※");
                 while (true) {
                     System.out.println("1. 무기 | 2. 방어구 | 3. 포션 | 4. 이전으로");
@@ -487,6 +489,22 @@ public class PlayMain {
                 }
             } else if (command == 4) {
                 System.out.println("상점으로 이동합니다.");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             } else if (command == 5) {
                 System.out.println("스탯을 자유롭게 분배해 보세요");
