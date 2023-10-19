@@ -59,7 +59,6 @@ public class PlayMain {
             }
         }
 
-
         if (user.getPlayerClass().equals("전사")) {
             user.getPlayerSkillList().add(SkillDB.getInstance().getSkillList().get(0));
             user.getPlayerSkillList().add(SkillDB.getInstance().getSkillList().get(1));
@@ -76,7 +75,6 @@ public class PlayMain {
             boxBox(user.getPlayerName() + "은(는)" + skillDB.playerskillList.get(13).getSkillName() + "을 습득했다!");
         }
 
-
         System.out.println("─━━━━━━━━━━━━━━━━━━━━━━━━⊱༻ ⚪ ༺⊰━━━━━━━━━━━━━━━━━━━━━━━━─");
         System.out.println("            계정 생성에 성공했습니다. 게임을 시작합니다!");
         System.out.println("─━━━━━━━━━━━━━━━━━━━━━━━━⊱༻ ⚪ ༺⊰━━━━━━━━━━━━━━━━━━━━━━━━─");
@@ -91,8 +89,11 @@ public class PlayMain {
             System.out.println("1. \uD83C\uDF0D 필드에 나간다 |2. \uD83D\uDCD6 스테이터스를 확인한다 |3.  ⚔\uFE0F\uD83D\uDD2E 보유 스킬 확인  |4. \uD83D\uDCE6 아이템박스 확인  | 5. \uD83D\uDED2 상점에 들어간다 | 6. ✏\uFE0F 스탯 분배");
             System.out.print("숫자 ▶\uFE0F  ");
             int command = Integer.parseInt(scan.nextLine());
+
             String nowField = "";
+
             if (command == 1) {
+
                 while (true) {
                     mainMonsterList.clear();
                     System.out.println("\n─━━━━━━━━━━━━━━━━━━━━━━━━⊱༻ 월드 맵 ༺⊰━━━━━━━━━━━━━━━━━━━━━━━━─\n");
@@ -108,10 +109,13 @@ public class PlayMain {
                         MonsterDB.getInstance().inputMonster(mainMonsterList, 1);
                         nowField = field1;
                         break;
+
                     } else if (selectField == 2) {
+
                         if (user.getLv() < 10) {
                             boxBox("❌입장하기 위한 레벨이 부족합니다.❌");
                             continue;
+
                         } else {
                             boxBox("\uD83E\uDEA8 무너진 성터로 출발합니다.");
                             MonsterDB.getInstance().inputMonster(mainMonsterList, 3);
@@ -121,9 +125,11 @@ public class PlayMain {
                         }
 
                     } else if (selectField == 3) {
+
                         if (user.getLv() < 20) {
                             boxBox("❌입장하기 위한 레벨이 부족합니다.❌");
                             continue;
+
                         } else {
                             boxBox("\uD83D\uDED5 옛 전쟁터로 출발합니다.");
                             MonsterDB.getInstance().inputMonster(mainMonsterList, 6);
@@ -134,9 +140,11 @@ public class PlayMain {
                         }
 
                     } else if (selectField == 4) {
+
                         if (user.getLv() < 30) {
                             boxBox("❌입장하기 위한 레벨이 부족합니다.❌");
                             continue;
+
                         } else {
                             boxBox("\uD83C\uDF06 마왕성으로 출발합니다.");
                             MonsterDB.getInstance().inputMonster(mainMonsterList, 10);
@@ -147,9 +155,11 @@ public class PlayMain {
                         }
 
                     } else if (selectField == 5) {
+
                         if (user.getLv() < 10) {
                             boxBox("❌입장하기 위한 레벨이 부족합니다.❌");
                             continue;
+
                         } else {
                             boxBox("⚜\uFE0F 대왕 슬라임에게 도전합니다.");
                             MonsterDB.getInstance().inputMonster(mainMonsterList, 2);
@@ -158,9 +168,11 @@ public class PlayMain {
                         }
 
                     } else if (selectField == 6) {
+
                         if (user.getLv() < 10) {
                             boxBox("❌입장하기 위한 레벨이 부족합니다.❌");
                             continue;
+
                         } else {
                             boxBox("⚜\uFE0F 킹 고블린에게 도전합니다.");
                             MonsterDB.getInstance().inputMonster(mainMonsterList, 5);
@@ -169,9 +181,11 @@ public class PlayMain {
                         }
 
                     } else if (selectField == 7) {
+
                         if (user.getLv() < 20) {
                             boxBox("❌입장하기 위한 레벨이 부족합니다.❌");
                             continue;
+
                         } else {
                             boxBox("⚜\uFE0F 거대 골렘에게 도전합니다.");
                             MonsterDB.getInstance().inputMonster(mainMonsterList, 9);
@@ -180,9 +194,11 @@ public class PlayMain {
                         }
 
                     } else if (selectField == 8) {
+
                         if (user.getLv() < 30) {
                             boxBox("❌입장하기 위한 레벨이 부족합니다.❌");
                             continue;
+
                         } else {
                             boxBox("⚜\uFE0F 드래곤에게 도전합니다.");
                             MonsterDB.getInstance().inputMonster(mainMonsterList, 13);
@@ -191,10 +207,10 @@ public class PlayMain {
                         }
 
                     } else {
-
                         boxBox("❌잘못 선택했습니다. 다시 선택해주세요.❌");
                         continue;
                     }
+
                 }
                 while (true) {
                     System.out.println("\n─━━━━━━━━━━━━━━━━━━━━━━━━⊱༻ 현재 필드 ༺⊰━━━━━━━━━━━━━━━━━━━━━━━━─\n");
@@ -213,9 +229,12 @@ public class PlayMain {
                         MonsterDB.instance.setMonster(a);
 
                         //레어도에 따른 특수개체 출현 표시
+
                         String mobName = "";
+
                         if (rare == 1.0) {
                             mobName = a.getMonsterName();
+
                         } else if (rare == 1.5) {
                             mobName = ("🌟 특수 개체 출현! 경험치 추가 🌟" + "\n" + "🌟 " + a.getMonsterName());
                         }
@@ -234,6 +253,7 @@ public class PlayMain {
                             System.out.println("1. \uD83D\uDDE1\uFE0F 싸운다 | 2. \uD83D\uDCD6 스테이터스를 확인한다 | 3. \uD83D\uDCE6 아이템박스 확인 | 4. \uD83D\uDEB4 도망간다");
                             System.out.print("숫자 ▶\uFE0F  ");
                             int battleCommand = Integer.parseInt(scan.nextLine());
+
                             if (battleCommand == 1) {
                                 boxBox("사용할 스킬을 선택해주세요");
                                 boxBox("0을 입력하면 이전 메뉴로 돌아갑니다.");
@@ -244,14 +264,15 @@ public class PlayMain {
                                     Skill.printSkillList(user);
                                     System.out.print("숫자 ▶\uFE0F  ");
                                     int battleSelect = Integer.parseInt(scan.nextLine()) - 1;
+
                                     if (battleSelect == -1) {
                                         boxBox("이전 메뉴로 돌아갑니다.");
                                         break;
+
                                     } else if (battleSelect >= user.playerSkillList.size()) {
-
                                         boxBox("❌잘못 선택했습니다. 다시 선택해주세요.❌");
-                                    } else {
 
+                                    } else {
                                         // 선택 스킬 설정
                                         Skill userChoiceSkill = user.playerSkillList.get(battleSelect);
 
@@ -272,39 +293,49 @@ public class PlayMain {
 
                                         // 방어인지 공격인지 선공권 정하기(공격 주고받기)
                                         if (userChoiceSkill.getSkillType().equals("방어")) {
+
                                             int defDamage = DamageMethod.defDamage(user, userChoiceSkill);
                                             boxBox(user.getPlayerName() + "의 " + userChoiceSkill.getSkillName() + "!!", "\uD83D\uDEE1\uFE0F 방어 계열 스킬을 사용했다");
                                             Thread.sleep(400);
+
                                             if (criticaldamage == 1.5) {
                                                 boxBox("❗" + user.getPlayerName() + "은(는) \uD83D\uDEE1\uFE0F완벽한 방어\uD83D\uDEE1\uFE0F를 를 펼쳤다.");
                                                 Thread.sleep(400);
+
                                             }
                                             boxBox(user.getPlayerName() + "은(는) " + " \uD83D\uDCA2 " + defDamage + "만큼의 대미지를 \uD83D\uDEE1\uFE0F방어할 수 있다!");
                                             Thread.sleep(400);
 
                                             System.out.println("⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶");
+
                                             if (defDamage > mobBattleDamage) {
                                                 boxBox(a.getMonsterName() + "의 " + mobChoiceDamage.getSkillName() + "!!", " \uD83D\uDCA2 " + mobBattleDamage + " 대미지!!");
                                                 Thread.sleep(400);
                                                 boxBox(user.getPlayerName() + "은(는) 모든 데미지를 \uD83D\uDEE1\uFE0F방어했다!!");
                                                 Thread.sleep(400);
                                                 System.out.println("⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶");
+
                                             } else if (defDamage < mobBattleDamage) {
+
                                                 int againMobDamage = Math.abs(defDamage - mobBattleDamage);
                                                 user.setStatNowHP(user.getStatNowHP() - againMobDamage);
                                                 boxBox(user.getPlayerName() + "은(는) " + a.getMonsterName() + "의 대미지를 모두 막아내지 못했다!!", a.getMonsterName() + "의 " + againMobDamage + "!!");
                                                 Thread.sleep(400);
                                                 boxBox(user.getPlayerName() + "은(는) " + " \uD83D\uDCA2 " + againMobDamage + "대미지를 입어 체력이" + user.getStatNowHP() + "가 되었다.");
                                                 Thread.sleep(400);
+
                                                 System.out.println("⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶");
                                             }
+
                                         } else {
                                             a.setMonsterHP((a.getMonsterHP() - userBattleDamage));
                                             boxBox(user.getPlayerName() + "의 " + userChoiceSkill.getSkillName() + "!!");
                                             Thread.sleep(400);
+
                                             if (criticaldamage == 1.5) {
                                                 boxBox("❗ 크리티컬 발동!", " \uD83D\uDCA2 " + userBattleDamage + " 대미지!!");
                                                 Thread.sleep(400);
+
                                             } else {
                                                 boxBox(" \uD83D\uDCA2 " + userBattleDamage + " 대미지!!");
                                                 Thread.sleep(400);
@@ -314,7 +345,8 @@ public class PlayMain {
                                             //체력이 0이 되면 처치 break;
                                             if (a.getMonsterHP() <= 0) {
                                                 a.setMonsterHP(0);
-                                                boxBox(a.getMonsterName() + "은(는) " + " \uD83D\uDCA2 " + userBattleDamage + " 대미지를 입어 체력이 " + a.getMonsterHP() + "이(가) 되었다.", mobName + " Lv." + a.getMonsterLv() + "을(를) 쓰러뜨렸다!");
+                                                boxBox(a.getMonsterName() + "은(는) " + " \uD83D\uDCA2 " + userBattleDamage + " 대미지를 입어 체력이 " +
+                                                        a.getMonsterHP() + "이(가) 되었다.", mobName + " Lv." + a.getMonsterLv() + "을(를) 쓰러뜨렸다!");
                                                 Thread.sleep(400);
 
                                                 //경험치 추가 기믹
@@ -344,13 +376,18 @@ public class PlayMain {
                                                 user.getItemsList().add(temp);
                                                 boxBox(temp.getItemName() + "을(를) 획득했다!!");
                                                 Thread.sleep(400);
+
                                                 System.out.println("⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶");
+
                                                 break battlInner;
+
                                             } else {
                                                 boxBox(a.getMonsterName() + "은(는) " + " \uD83D\uDCA2 " + userBattleDamage + " 대미지를 입어 체력이 " + a.getMonsterHP() + "이(가) 되었다.");
                                                 Thread.sleep(400);
                                             }
+
                                             System.out.println("⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶");
+
                                             user.setStatNowHP(user.getStatNowHP() - mobBattleDamage);
                                             boxBox(a.getMonsterName() + "의 " + mobChoiceDamage.getSkillName() + "!!", " \uD83D\uDCA2 " + mobBattleDamage + " 대미지!!");
                                             Thread.sleep(400);
@@ -368,6 +405,7 @@ public class PlayMain {
                                                         ". ######::: ##:::: ##: ##:::: ##: ########:. #######::::. ###:::: ########: ##:::. ##:\n" +
                                                         ":......::::..:::::..::..:::::..::........:::.......::::::...:::::........::..:::::..::\n");
                                                 break outer;
+
                                             } else {
                                                 boxBox(user.getPlayerName() + "은(는) " + " \uD83D\uDCA2 " + mobBattleDamage + "의 대미지를 입어 체력이" + user.getStatNowHP() + "가 되었다.");
                                                 Thread.sleep(400);
@@ -380,13 +418,13 @@ public class PlayMain {
 
                             } else if (battleCommand == 3) {
 
-
                                 boxBox("아이템 카테고리를 선택해주세요");
 
                                 while (true) {
                                     System.out.println("1. \uD83D\uDDE1\uFE0F 무기 | 2. \uD83D\uDEE1\uFE0F 방어구 | 3. \uD83C\uDF77 포션 | 4. ⛺ 거점으로 돌아간다");
                                     System.out.print("숫자 ▶\uFE0F  ");
                                     int itemLookCommand = Integer.parseInt(scan.nextLine());
+
                                     if (itemLookCommand >= 4) {
                                         System.out.println("이전으로 돌아갑니다.");
                                         break;
@@ -399,6 +437,7 @@ public class PlayMain {
 
                                     Class.openItemBox(user, itemLookCommand);
                                     int returnThere = Class.openItemBoxAlpha(user, itemLookCommand);
+
                                     if (returnThere == 0) {
                                         boxBox("아이템이 존재하지 않습니다.", "전투로 돌아갑니다.");
                                         Thread.sleep(400);
@@ -419,8 +458,8 @@ public class PlayMain {
                                     System.out.println("1. \uD83D\uDDB2\uFE0F 장착/탈착/사용 | 2. ⛺ 이전으로");
                                     System.out.print("숫자 ▶\uFE0F  ");
                                     int itemLookCommand2 = Integer.parseInt(scan.nextLine());
-                                    if (itemLookCommand2 == 1) {
 
+                                    if (itemLookCommand2 == 1) {
 
                                         System.out.print("No.숫자 ▶\uFE0F  ");
 
@@ -430,6 +469,7 @@ public class PlayMain {
 
                                     } else if (itemLookCommand2 == 2) {
                                         break;
+
                                     } else {
                                         boxBox("❌잘못 선택했습니다. 다시 선택해주세요.❌");
                                         continue;
@@ -439,6 +479,7 @@ public class PlayMain {
                             } else if (battleCommand == 4) {
                                 System.out.println(mobName + " Lv." + a.getMonsterLv() + "(으)로부터 도망쳤다!");
                                 break;
+
                             } else {
                                 boxBox("❌잘못 선택했습니다. 다시 선택해주세요.❌");
                                 continue;
@@ -457,6 +498,7 @@ public class PlayMain {
                             System.out.println("1. \uD83D\uDDE1\uFE0F 무기 | 2. \uD83D\uDEE1\uFE0F 방어구 | 3. \uD83C\uDF77 포션 | 4. ⛺ 거점으로 돌아간다");
                             System.out.print("숫자 ▶\uFE0F  ");
                             int itemLookCommand = Integer.parseInt(scan.nextLine());
+
                             if (itemLookCommand >= 4) {
                                 System.out.println("이전으로 돌아갑니다.");
                                 break;
@@ -469,6 +511,7 @@ public class PlayMain {
 
                             Class.openItemBox(user, itemLookCommand);
                             int returnThere = Class.openItemBoxAlpha(user, itemLookCommand);
+
                             if (returnThere == 0) {
                                 boxBox("아이템이 존재하지 않습니다.", "필드로 돌아갑니다.");
                                 Thread.sleep(400);
@@ -488,6 +531,7 @@ public class PlayMain {
 
                             System.out.println("1. \uD83D\uDDB2\uFE0F 장착/탈착/사용 | 2. ⛺ 이전으로");
                             System.out.print("숫자 ▶\uFE0F  ");
+
                             int itemLookCommand2 = Integer.parseInt(scan.nextLine());
                             if (itemLookCommand2 == 1) {
 
@@ -500,6 +544,7 @@ public class PlayMain {
 
                             } else if (itemLookCommand2 == 2) {
                                 break;
+
                             } else {
                                 boxBox("❌잘못 선택했습니다. 다시 선택해주세요.❌");
                                 continue;
@@ -530,6 +575,7 @@ public class PlayMain {
                 boxBox("자세히 볼 스킬의 번호를 입력해주세요", "0을 입력하면 거점으로 돌아갑니다.");
                 System.out.print("숫자 ▶\uFE0F  ");
                 int choicedSkill = Integer.parseInt(scan.nextLine()) -1 ;
+
                 if (choicedSkill == -1){
                     boxBox("거점으로 돌아갑니다.");
                     continue  ;
@@ -546,6 +592,7 @@ public class PlayMain {
                     System.out.println("1. \uD83D\uDDE1\uFE0F 무기 | 2. \uD83D\uDEE1\uFE0F 방어구 | 3. \uD83C\uDF77 포션 | 4. ⛺ 거점으로 돌아간다");
                     System.out.print("숫자 ▶\uFE0F  ");
                     int itemLookCommand = Integer.parseInt(scan.nextLine());
+
                     if (itemLookCommand >= 4) {
                         System.out.println("이전으로 돌아갑니다.");
                         break;
@@ -558,6 +605,7 @@ public class PlayMain {
 
                     Class.openItemBox(user, itemLookCommand);
                     int returnThere = Class.openItemBoxAlpha(user, itemLookCommand);
+
                     if (returnThere == 0) {
                         boxBox("아이템이 존재하지 않습니다.", "거점으로 돌아갑니다.");
                         Thread.sleep(400);
@@ -580,7 +628,6 @@ public class PlayMain {
                     int itemLookCommand2 = Integer.parseInt(scan.nextLine());
                     if (itemLookCommand2 == 1) {
 
-
                         System.out.print("No.숫자 ▶\uFE0F  ");
 
                         int choiceItem = Integer.parseInt(scan.nextLine())-1;
@@ -589,6 +636,7 @@ public class PlayMain {
 
                     } else if (itemLookCommand2 == 2) {
                         break;
+
                     } else {
                         boxBox("❌잘못 선택했습니다. 다시 선택해주세요.❌");
                         continue;
@@ -625,16 +673,18 @@ public class PlayMain {
                         int itemBuyCommand = Integer.parseInt(scan.nextLine()) -1;
                         // 💰 구입하기
                         boolean reallyGetMoney = Class.buyItemAlpha(itemBuyCommand, user, shopDB);
+
                         if (reallyGetMoney) {
                             Class.buyItem(itemBuyCommand, user, shopDB);
                             System.out.println("※※방금 구매한 아이템 장착/사용하시겠습니까?※※");
                             System.out.println("※※ Y /N ※※");
                             System.out.print("▶\uFE0F  ");
                             String setNowBuyItem = scan.nextLine();
-                            if (setNowBuyItem.equals("y")) {
 
+                            if (setNowBuyItem.equals("y")) {
                                 Class.useItem(Class.lastestItem(user), user);
                             }
+
                         } else {
                             boxBox("돈이 부족합니다.", "상점 입구로 돌아갑니다.");
                             break;
@@ -645,12 +695,12 @@ public class PlayMain {
                         System.out.println("1. \uD83D\uDDE1\uFE0F 무기 | 2. \uD83D\uDEE1\uFE0F 방어구 | 3. \uD83C\uDF77 포션 | 4. ⛺ 거점으로 돌아간다");
                         System.out.print("숫자 ▶\uFE0F  ");
                         int itemSellCommand = Integer.parseInt(scan.nextLine());
-
                         // 판매하기
                         if (itemSellCommand >= 4) {
                             boxBox("거점으로 돌아갑니다.");
                             break;
                         }
+
                         Class.openItemBox(user, itemSellCommand);
 
                         int returnThere = Class.openItemBoxAlpha(user, itemSellCommand);
@@ -669,6 +719,7 @@ public class PlayMain {
 
                     } else if (itemShopCommandFirst == 3) {
                         break;
+
                     } else {
                         boxBox("❌잘못 선택했습니다. 다시 선택해주세요.❌");
                         continue;
@@ -679,8 +730,10 @@ public class PlayMain {
 
             } else if (command == 6) {
                 boxBox("스탯을 자유롭게 분배해 보세요");
+
                 if (user.getExtraStat() == 0) {
                     boxBox("여유 스탯이 없습니다. 레벨업을 하여 스탯을 모아주세요");
+
                 } else {
                     while (user.getExtraStat() > 0) {
                         int a = user.getStatSTR();
@@ -695,6 +748,7 @@ public class PlayMain {
                         System.out.println("[1. \uD83D\uDCAA STR | 2. \uD83C\uDFAF DEX | 3. \uD83C\uDF93 INT | 4. \uD83C\uDFB2 LUK | 5. ❤\uFE0F HP | 6. \uD83D\uDCA0 MP | 7. ⛺ 거점으로 돌아간다]");
                         System.out.print("올릴 스탯 번호 ▶\uFE0F  ");
                         int statIndexNum = Integer.parseInt(scan.nextLine());
+
                         if (statIndexNum == 7) {
                             break;
                         }
@@ -715,20 +769,24 @@ public class PlayMain {
                             user.setStatDEX(user.getStatDEX() + statNum);
                             System.out.println("\n \uD83C\uDFAF DEX " + b + "➡\uFE0F" + (user.getStatDEX()));
                             user.setExtraStat(user.getExtraStat() - statNum);
+
                         } else if (statIndexNum == 3) {
                             user.setStatINT(user.getStatINT() + statNum);
                             System.out.println("\n \uD83C\uDF93 INT " + c + "➡\uFE0F" + (user.getStatINT()));
                             user.setExtraStat(user.getExtraStat() - statNum);
+
                         } else if (statIndexNum == 4) {
                             user.setStatLUK(user.getStatLUK() + statNum);
                             System.out.println("\n \uD83C\uDFB2 LUK " + d + "➡\uFE0F" + (user.getStatLUK()));
                             user.setExtraStat(user.getExtraStat() - statNum);
+
                         } else if (statIndexNum == 5) {
                             user.setStatNowHP(user.getStatNowHP() + +(statNum * 3));
                             user.setStatMaxHP(user.getStatMaxHP() + +(statNum * 3));
                             user.setExtraStat(user.getExtraStat() - statNum);
                             System.out.println("\n ❤\uFE0F 현재체력 " + e + "➡\uFE0F" + (user.getStatNowHP()));
                             System.out.println("\n ❤\uFE0F 최대체력 " + f + "➡\uFE0F" + (user.getStatMaxHP()));
+
                         } else if (statIndexNum == 6) {
                             user.setStatNowMP(user.getStatNowMP() + +(statNum * 3));
                             user.setStatMaxMP(user.getStatMaxMP() + +(statNum * 3));
