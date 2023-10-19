@@ -7,26 +7,26 @@ public class MonsterDB {
 
     private MonsterDB() {
         monsterList.add(new Monster(1, 1, "고블린", 0, "참격약점", 5, 1000));
-        monsterList.add(new Monster(1, monsterList.size() + 1, "슬라임", 0, "참격약점", 5,  10));
+        monsterList.add(new Monster(1, monsterList.size() + 1, "슬라임", 0, "참격약점", 5, 10));
 
-        monsterList.add(new Monster(2, monsterList.size() + 1, "대왕슬라임", 10, "참격약점", 5,  10));
+        monsterList.add(new Monster(2, monsterList.size() + 1, "대왕슬라임", 10, "참격약점", 5, 10));
 
         monsterList.add(new Monster(3, monsterList.size() + 1, "홉고블린", 0, "참격약점", 5, 10));
-        monsterList.add(new Monster(3, monsterList.size() + 1, "산성슬라임", 0, "참격약점", 5,  10));
+        monsterList.add(new Monster(3, monsterList.size() + 1, "산성슬라임", 0, "참격약점", 5, 10));
 
-        monsterList.add(new Monster(4, monsterList.size() + 1, "킹고블린", 20, "참격약점", 5,  10));
+        monsterList.add(new Monster(4, monsterList.size() + 1, "킹고블린", 20, "참격약점", 5, 10));
 
-        monsterList.add(new Monster(5, monsterList.size() + 1, "흑랑", 0, "참격약점", 5,  10));
-        monsterList.add(new Monster(5, monsterList.size() + 1, "세이렌", 0, "참격약점", 5,  10));
-        monsterList.add(new Monster(5, monsterList.size() + 1, "골렘", 0, "참격약점", 5,  10));
+        monsterList.add(new Monster(5, monsterList.size() + 1, "흑랑", 0, "참격약점", 5, 10));
+        monsterList.add(new Monster(5, monsterList.size() + 1, "세이렌", 0, "참격약점", 5, 10));
+        monsterList.add(new Monster(5, monsterList.size() + 1, "골렘", 0, "참격약점", 5, 10));
 
-        monsterList.add(new Monster(6, monsterList.size() + 1, "거대 골렘", 30, "참격약점", 5,  10));
+        monsterList.add(new Monster(6, monsterList.size() + 1, "거대 골렘", 30, "참격약점", 5, 10));
 
-        monsterList.add(new Monster(7, monsterList.size() + 1, "오우거", 0, "참격약점", 5,  10));
-        monsterList.add(new Monster(7, monsterList.size() + 1, "마인", 0, "참격약점", 5,  10));
-        monsterList.add(new Monster(7, monsterList.size() + 1, "타천사", 0, "참격약점", 5,  10));
+        monsterList.add(new Monster(7, monsterList.size() + 1, "오우거", 0, "참격약점", 5, 10));
+        monsterList.add(new Monster(7, monsterList.size() + 1, "마인", 0, "참격약점", 5, 10));
+        monsterList.add(new Monster(7, monsterList.size() + 1, "타천사", 0, "참격약점", 5, 10));
 
-        monsterList.add(new Monster(8, monsterList.size() + 1, "드래곤", 40, "참격약점", 5,  10));
+        monsterList.add(new Monster(8, monsterList.size() + 1, "드래곤", 40, "참격약점", 5, 10));
 
     }
 
@@ -42,7 +42,7 @@ public class MonsterDB {
     }
 
 
-    public Monster getMonster (ArrayList<Monster> a) {
+    public Monster getMonster(ArrayList<Monster> a) {
         // 몬스터의 인덱스 추출
         int alpha = UtillMethod.makeRandom(0, a.size() - 1);
 
@@ -50,20 +50,24 @@ public class MonsterDB {
         return a.get(alpha);
     }
 
-public void setMonster(Monster a){
-    // 레벨 설정
-    Monster mob = a;
-  if (a.getMonsterGroup() == 1) {
-        a.setMonsterLv(UtillMethod.makeRandom(1, 9));
-    } else if (a.getMonsterGroup() == 3) {
-        a.setMonsterLv(UtillMethod.makeRandom(10, 19));
-    } else if (a.getMonsterGroup() == 5) {
-        a.setMonsterLv(UtillMethod.makeRandom(20, 29));
-    } else if (a.getMonsterGroup() == 7) {
-        a.setMonsterLv(UtillMethod.makeRandom(30, 39));
-    }
+    public void setMonster(Monster a) {
+        // 레벨 설정
+        Monster mob = a;
+        if (a.getMonsterGroup() == 1) {
+            a.setMonsterLv(UtillMethod.makeRandom(1, 9));
+        } else if (a.getMonsterGroup() == 3) {
+            a.setMonsterLv(UtillMethod.makeRandom(10, 19));
+        } else if (a.getMonsterGroup() == 5) {
+            a.setMonsterLv(UtillMethod.makeRandom(20, 29));
+        } else if (a.getMonsterGroup() == 7) {
+            a.setMonsterLv(UtillMethod.makeRandom(30, 39));
+        }
 
-}
+        a.setMonsterHP(a.getMonsterHP() + (a.getMonsterLv() * 2));
+        a.setMonsterATK(a.getMonsterATK() + (int) UtillMethod.myRound(((double) a.getMonsterLv() / 2 ), 1));
+
+
+    }
 
     @Override
     public String toString() {

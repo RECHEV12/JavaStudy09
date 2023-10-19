@@ -320,8 +320,10 @@ public class PlayMain {
                                                 //경험치 추가 기믹
                                                 if (user.getLv() < 40) {
                                                     int exp = a.getExp(a, rare);
-                                                    user.setExp(user.getExp() + exp + 100);
-                                                    boxBox("경험치 " + exp + " 획득!");
+                                                    int userExp = user.getExp();
+                                                    user.setExp(user.getExp() + exp);
+                                                    boxBox("경험치 " + exp + " 획득!", "❤\uFE0F  현재 경험치 :  " + userExp + "➡\uFE0F" + user.getExp());
+
                                                     Thread.sleep(400);
                                                 }
 
