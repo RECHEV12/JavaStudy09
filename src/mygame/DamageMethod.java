@@ -2,14 +2,16 @@ package mygame;
 
 public class DamageMethod {
     public static int getUserDamage(Class user, Skill skr, Monster mob, double critical) {
-        int strDamage = (user.getStatSTR() * skr.getPerStr());
-        int intDamage = (user.getStatINT() * skr.getPerInt());
+        int strDamage = (int)UtillMethod.myRound(user.getStatSTR() * (skr.getPerStr() /(double) 100),1);
+        int intDamage = (int)UtillMethod.myRound(user.getStatINT() * (skr.getPerInt()/ (double)100),1);
 
         double typeCritical = 1;
         if ((skr.getSkillType().equals("참격") && mob.getMonsterType().equals("참격약점")) ||
                 (skr.getSkillType().equals("마법") && mob.getMonsterType().equals("마법약점"))) {
-            typeCritical = 1.2;
+            typeCritical = 1.3;
         }
+
+
 
         double totalDamage = ((strDamage + intDamage) * (typeCritical)) * (critical);
 
@@ -35,10 +37,8 @@ public class DamageMethod {
 
     }
     public static int getMonsterDamage(Skill skr, Monster mob) {
-
-        return  (mob.getMonsterATK() * skr.getPerStr());
-
-
+        double num =(skr.getPerStr() / (double)100);
+        return(int) UtillMethod.myRound((mob.getMonsterATK()) * num,1);
     }
     public static int defDamage(Class user, Skill skr) {
         return (user.getStatDEX() * skr.getPerDex());

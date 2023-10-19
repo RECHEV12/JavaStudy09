@@ -224,9 +224,9 @@ public class PlayMain {
                     if (command2 == 1) {
                         Monster a = new Monster(MonsterDB.instance.getMonster(mainMonsterList));
 
-                        double rare = UtillMethod.random5per();
+                        double rare = UtillMethod.random5perRare();
 
-                        MonsterDB.instance.setMonster(a);
+                        MonsterDB.instance.setMonster(a, user);
 
                         //레어도에 따른 특수개체 출현 표시
 
@@ -259,9 +259,13 @@ public class PlayMain {
                                 boxBox("0을 입력하면 이전 메뉴로 돌아갑니다.");
 
                                 while (true) {
+                                    a.battleMonsterData(a, rare);
+                                    System.out.println(user);
+
                                     System.out.println(" ⚔\uFE0F " + "No. 0 - 이전 메뉴로");
-                                    // 스킬 인덱스를 가져오기
+
                                     Skill.printSkillList(user);
+
                                     System.out.print("숫자 ▶\uFE0F  ");
                                     int battleSelect = Integer.parseInt(scan.nextLine()) - 1;
 
@@ -275,6 +279,16 @@ public class PlayMain {
                                     } else {
                                         // 선택 스킬 설정
                                         Skill userChoiceSkill = user.playerSkillList.get(battleSelect);
+
+                                        if (user.getStatNowMP() < userChoiceSkill.getUseMp()) {
+                                            boxBox("마나가 부족합니다. 다시 선택해주세요");
+                                            continue;
+
+                                        } else {
+                                            int nwMP = user.getStatNowMP();
+                                            user.setStatNowMP(user.getStatNowMP() - userChoiceSkill.getUseMp());
+                                            boxBox("\uD83D\uDCA0 현재마나 " + nwMP + "➡\uFE0F" + (user.getStatNowMP()));
+                                        }
 
                                         //최종대미지 표시
                                         double criticaldamage = DamageMethod.criticalReturn(user);
@@ -354,7 +368,8 @@ public class PlayMain {
                                                     int exp = a.getExp(a, rare);
                                                     int userExp = user.getExp();
                                                     user.setExp(user.getExp() + exp);
-                                                    boxBox("경험치 " + exp + " 획득!", "❤\uFE0F  현재 경험치 :  " + userExp + "➡\uFE0F" + user.getExp());
+                                                    boxBox("경험치 " + exp + " 획득!", "현재 경험치 :  " + userExp + "➡\uFE0F" + user.getExp(), "필요 경험치" + (user.getNextExp() - user.getExp()));
+
 
                                                     Thread.sleep(400);
                                                 }
@@ -373,8 +388,12 @@ public class PlayMain {
 
                                                 // 아이템 드랍 기믹
                                                 Item temp = Item.dropItem(a);
-                                                user.getItemsList().add(temp);
-                                                boxBox(temp.getItemName() + "을(를) 획득했다!!");
+
+                                                if ((temp == null)) {
+                                                    user.getItemsList().add(temp);
+                                                    boxBox(temp.getItemName() + "을(를) 획득했다!!");
+                                                }
+                                                System.out.println(user.getItemsList());
                                                 Thread.sleep(400);
 
                                                 System.out.println("⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶");
@@ -446,11 +465,11 @@ public class PlayMain {
 
                                     boxBox("자세히 볼 장비의 번호를 입력해주세요", "0을 입력하면 전투로 돌아갑니다.");
                                     System.out.print("숫자 ▶\uFE0F  ");
-                                    int choicedItem = Integer.parseInt(scan.nextLine())-1 ;
+                                    int choicedItem = Integer.parseInt(scan.nextLine()) - 1;
 
-                                    if (choicedItem == -1){
+                                    if (choicedItem == -1) {
                                         boxBox("전투로 돌아갑니다.");
-                                        continue  ;
+                                        continue;
                                     }
 
                                     returnItemOne(user.getItemsList().get(choicedItem), choicedItem);
@@ -463,7 +482,7 @@ public class PlayMain {
 
                                         System.out.print("No.숫자 ▶\uFE0F  ");
 
-                                        int choiceItem = Integer.parseInt(scan.nextLine()) -1;
+                                        int choiceItem = Integer.parseInt(scan.nextLine()) - 1;
 
                                         Class.useItem(choiceItem, user);
 
@@ -520,11 +539,11 @@ public class PlayMain {
 
                             boxBox("자세히 볼 장비의 번호를 입력해주세요", "0을 입력하면 필드로 돌아갑니다.");
                             System.out.print("숫자 ▶\uFE0F  ");
-                            int choicedItem = Integer.parseInt(scan.nextLine())-1 ;
+                            int choicedItem = Integer.parseInt(scan.nextLine()) - 1;
 
-                            if (choicedItem == -1){
+                            if (choicedItem == -1) {
                                 boxBox("필드로 돌아갑니다.");
-                                continue  ;
+                                continue;
                             }
 
                             returnItemOne(user.getItemsList().get(choicedItem), choicedItem);
@@ -538,7 +557,7 @@ public class PlayMain {
 
                                 System.out.print("No.숫자 ▶\uFE0F  ");
 
-                                int choiceItem = Integer.parseInt(scan.nextLine()) -1;
+                                int choiceItem = Integer.parseInt(scan.nextLine()) - 1;
 
                                 Class.useItem(choiceItem, user);
 
@@ -549,7 +568,6 @@ public class PlayMain {
                                 boxBox("❌잘못 선택했습니다. 다시 선택해주세요.❌");
                                 continue;
                             }
-
 
 
                         }
@@ -574,14 +592,13 @@ public class PlayMain {
                 showSkillName(user.getPlayerSkillList());
                 boxBox("자세히 볼 스킬의 번호를 입력해주세요", "0을 입력하면 거점으로 돌아갑니다.");
                 System.out.print("숫자 ▶\uFE0F  ");
-                int choicedSkill = Integer.parseInt(scan.nextLine()) -1 ;
+                int choicedSkill = Integer.parseInt(scan.nextLine()) - 1;
 
-                if (choicedSkill == -1){
+                if (choicedSkill == -1) {
                     boxBox("거점으로 돌아갑니다.");
-                    continue  ;
+                    continue;
                 }
                 returnSkillListone(user.getPlayerSkillList(), choicedSkill);
-
 
 
             } else if (command == 4) {
@@ -614,11 +631,11 @@ public class PlayMain {
 
                     boxBox("자세히 볼 장비의 번호를 입력해주세요", "0을 입력하면 거점으로 돌아갑니다.");
                     System.out.print("숫자 ▶\uFE0F  ");
-                    int choicedItem = Integer.parseInt(scan.nextLine())-1 ;
+                    int choicedItem = Integer.parseInt(scan.nextLine()) - 1;
 
-                    if (choicedItem == -1){
+                    if (choicedItem == -1) {
                         boxBox("거점으로 돌아갑니다.");
-                        continue  ;
+                        continue;
                     }
 
                     returnItemOne(user.getItemsList().get(choicedItem), choicedItem);
@@ -630,7 +647,7 @@ public class PlayMain {
 
                         System.out.print("No.숫자 ▶\uFE0F  ");
 
-                        int choiceItem = Integer.parseInt(scan.nextLine())-1;
+                        int choiceItem = Integer.parseInt(scan.nextLine()) - 1;
 
                         Class.useItem(choiceItem, user);
 
@@ -670,7 +687,7 @@ public class PlayMain {
 
                         boxBox("구매할 아이템 번호를 선택해 주세요.");
                         System.out.print("숫자 ▶\uFE0F  ");
-                        int itemBuyCommand = Integer.parseInt(scan.nextLine()) -1;
+                        int itemBuyCommand = Integer.parseInt(scan.nextLine()) - 1;
                         // 💰 구입하기
                         boolean reallyGetMoney = Class.buyItemAlpha(itemBuyCommand, user, shopDB);
 
@@ -713,7 +730,7 @@ public class PlayMain {
 
                         System.out.print("숫자 ▶\uFE0F  ");
 
-                        int choiceItem = Integer.parseInt(scan.nextLine())-1;
+                        int choiceItem = Integer.parseInt(scan.nextLine()) - 1;
 
                         Class.sellItem(choiceItem, user);
 

@@ -6,8 +6,8 @@ public class MonsterDB {
     private ArrayList<Monster> monsterList = new ArrayList<>();
 
     private MonsterDB() {
-        monsterList.add(new Monster(1, 1, "고블린", 0, "참격약점", 5, 1000));
-        monsterList.add(new Monster(1, monsterList.size() + 1, "슬라임", 0, "참격약점", 5, 10));
+        monsterList.add(new Monster(1, 1, "고블린", 0, "참격약점", 10, 5));
+        monsterList.add(new Monster(1, monsterList.size() + 1, "슬라임", 0, "참격약점", 10, 5));
 
         monsterList.add(new Monster(2, monsterList.size() + 1, "대왕슬라임", 10, "참격약점", 5, 10));
 
@@ -50,17 +50,34 @@ public class MonsterDB {
         return a.get(alpha);
     }
 
-    public void setMonster(Monster a) {
+    public void setMonster(Monster a, Class user) {
         // 레벨 설정
         Monster mob = a;
         if (a.getMonsterGroup() == 1) {
-            a.setMonsterLv(UtillMethod.makeRandom(1, 9));
+            if (user.getLv() < 5){
+            a.setMonsterLv(UtillMethod.makeRandom(1, 5));
+            }else {
+                a.setMonsterLv(UtillMethod.makeRandom(1, 9));
+            }
+
         } else if (a.getMonsterGroup() == 3) {
-            a.setMonsterLv(UtillMethod.makeRandom(10, 19));
+            if (user.getLv() < 15) {
+                a.setMonsterLv(UtillMethod.makeRandom(10, 15));
+            }else {
+                a.setMonsterLv(UtillMethod.makeRandom(10, 19));
+            }
         } else if (a.getMonsterGroup() == 5) {
-            a.setMonsterLv(UtillMethod.makeRandom(20, 29));
+            if (user.getLv() < 25) {
+                a.setMonsterLv(UtillMethod.makeRandom(20, 25));
+            }else {
+                a.setMonsterLv(UtillMethod.makeRandom(20, 29));
+            }
         } else if (a.getMonsterGroup() == 7) {
-            a.setMonsterLv(UtillMethod.makeRandom(30, 39));
+            if (user.getLv() < 35) {
+                a.setMonsterLv(UtillMethod.makeRandom(30, 35));
+            }else {
+                a.setMonsterLv(UtillMethod.makeRandom(30, 39));
+            }
         }
 
         a.setMonsterHP(a.getMonsterHP() + (a.getMonsterLv() * 2));

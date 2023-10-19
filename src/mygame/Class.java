@@ -37,7 +37,7 @@ public class Class {
                 "╔═════════════════════════════════════════════════════════════════╗" + '\n' +
                         "직업 : " + playerClass + '\n' +
                         "이름 : " + playerName + "  레벨 : " + lv + '\n' +
-                        "현재 경험치 : " + exp + "레벨업 요구치 : " + (nextExp - exp) + '\n' +
+                        "현재 경험치 : " + exp + "  레벨업 요구치 : " + (nextExp - exp) + '\n' +
                         "\uD83D\uDCAA STR : " + statSTR + "  \uD83C\uDFAF DEX : " + statDEX + '\n' +
                         "\uD83C\uDF93 INT : " + statINT + "  \uD83C\uDFB2 LUK : " + statLUK + '\n' +
                         "❤\uFE0F 현재체력 : " + statNowHP + "  ❤\uFE0F 최대체력 : " + statMaxHP + '\n' +
@@ -76,7 +76,7 @@ public class Class {
                                 returnItemOneName(item, Class.getWarrior().itemsList.indexOf(item));
 
 
-                            } else {
+                            } else{
                                 UtillMethod.boxBox("무기가 없습니다");
                             }
 

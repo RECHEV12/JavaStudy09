@@ -77,13 +77,13 @@ public class Monster {
     public void battleMonsterData(Monster a, double b) {
         if (b == 1.0) {
             System.out.println("╔═════════════════════════╗");
-            System.out.println("| " + a.getMonsterName() + " Lv." + a.getMonsterLv() + "\n" + "| "+"❤️ : " + a.getMonsterHP()+ "\n" + a.getMonsterATK());
+            System.out.println("| " + a.getMonsterName() + " Lv." + a.getMonsterLv() + "\n" + "| "+"❤️ : " + a.getMonsterHP()+ "\n" + "몬스터 \uD83D\uDCAA 공격력 : " +a.getMonsterATK());
             System.out.println("╚═════════════════════════╝");
 
         }
         if (b == 1.5) {
             System.out.println("╔═════════════════════════╗");
-            System.out.println("| " + "🌟 " + a.getMonsterName() + " - Lv." + a.getMonsterLv() + "\n" +"| " + "❤\uFE0F : " + a.getMonsterHP()+ "\n" + a.getMonsterATK());
+            System.out.println("| " + "🌟 " + a.getMonsterName() + " - Lv." + a.getMonsterLv() + "\n" +"| " + "❤\uFE0F : " + a.getMonsterHP()+ "\n"  + "몬스터 \uD83D\uDCAA 공격력 : " + a.getMonsterATK());
             System.out.println("╚═════════════════════════╝");
         }
     }

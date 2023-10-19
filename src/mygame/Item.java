@@ -2,6 +2,8 @@ package mygame;
 
 import java.util.ArrayList;
 
+import static mygame.UtillMethod.random5perInt;
+
 public class Item {
     private String itemName; /*아이템 이름*/
     private String itemType; /*아이템 타입*/
@@ -143,12 +145,11 @@ public class Item {
                 temp.add(it);
             }
         }
-        double randNum = UtillMethod.random5per();
 
-        if (randNum == 1) {
+        int b = random5perInt();
+        if (b == 1) {
             int randomNum = UtillMethod.makeRandom(0, temp.size() - 1);
             tempItem = temp.get(randomNum);
-
         }
         return tempItem;
     }

@@ -64,14 +64,24 @@ public class UtillMethod {
         return (int) ((Math.random() * (b - a + 1)) + a);
     }
 
-    public static double random5per() {
-        double a = (int) makeRandom(1, 100);
-        if (a >= 1 && a <= 5) {
+    public static double random5perRare() {
+        double a = 0;
+             int ab = makeRandom(1, 100);
+        if (ab >= 1 && ab <= 5) {
             a = 1.5;
         } else {
             a = 1;
         }
         return a;
+    }
+
+    public static int random5perInt() {
+        int a = makeRandom(1, 100);
+        int b = 0;
+        if (a >=0 && a <=5){
+            b= 1;
+        }
+        return b;
     }
 
     public static Skill monsterChoiceSkill(Monster a) {

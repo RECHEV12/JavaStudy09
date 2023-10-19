@@ -12,8 +12,8 @@ public class SkillDB {
  // todo 스킬 대미지 설정 제대로 넣기
     private  SkillDB() {
         // 검사공용
-        playerskillList.add(new Skill("⚔\uFE0F 찌르기", "참격", "대검으로 찌릅니다. \n STR 10% | INT 5%",1,"전사", 20, 10, 5, 0));
-        playerskillList.add(new Skill("\uD83D\uDEE1\uFE0F 막기", "방어", "검으로 막습니다. DEX가 높을 시, 더 많은 수치의 대미지를 방어합니다. \n STR 20% | DEX 20% ", 1,"전사",20, 20, 0, 20));
+        playerskillList.add(new Skill("⚔\uFE0F 찌르기", "참격", "대검으로 찌릅니다. \n STR 10% | INT 5%",1,"전사", 0, 40, 30, 0));
+        playerskillList.add(new Skill("\uD83D\uDEE1\uFE0F 막기", "방어", "검으로 막습니다. DEX가 높을 시, 더 많은 수치의 대미지를 방어합니다. \n STR 20% | DEX 20% ", 1,"전사",0, 20, 0, 20));
         playerskillList.add(new Skill("⚔\uFE0F 크게 휘두르기", "참격", "대검으로 크게 휘두릅니다. \n STR 15% | INT 5%",5,"전사",20, 15, 5, 0));
         playerskillList.add(new Skill("⚔\uFE0F 십자베기", "참격", "대검을 십자로 휘둘러 참격을 입힙니다. \n STR 25% | INT 5%",9,"전사", 20, 25, 5, 0));
         playerskillList.add(new Skill("⚔\uFE0F 홀리 슬래시", "참격", "빛을 검에 담아 베어가릅니다. \n STR 30% | INT 5%", 10,"전사",20, 30, 5,0));
@@ -26,7 +26,7 @@ public class SkillDB {
         playerskillList.add(new Skill("\uD83C\uDF87스타라이트 스트림", "참격", "별무리와 같은 빛을 내며 검을 휘두릅니다. \n STR 80% |INT 10% ", 40,"전사",20, 80,0, 10));
 
         //마법사공용
-        playerskillList.add(new Skill("\uD83D\uDD2E 매직 미사일", "마법", "마법으로 된 미사일을 발사합니다. \n STR 10% | INT 5%",1,"마법사", 0, 20, 20, 30));
+        playerskillList.add(new Skill("\uD83D\uDD2E 매직 미사일", "마법", "마법으로 된 미사일을 발사합니다. \n STR 5% | INT 15%",1,"마법사", 0, 5, 15, 0));
         playerskillList.add(new Skill("\uD83D\uDEE1\uFE0F 마나 실드", "마법", "마나를 몸 주위에 펼쳐 적의 공격을 방어합니다. \n STR 10% | INT 5%", 1,"마법사", 0,20, 20, 30));
         playerskillList.add(new Skill("\uD83D\uDD2E 차지 미사일", "마법", "미사일을 응축시켜 빠르게 쏘아냅니다. \n STR 10% | INT 5%",5,"마법사", 0, 20, 20, 30));
         playerskillList.add(new Skill("\uD83D\uDD2E 마나 봄", "마법", "마력을 한 곳에 응집시켜 폭발시킵니다. \n STR 10% | INT 5%", 9,"마법사", 0,20, 20, 30));
@@ -39,10 +39,11 @@ public class SkillDB {
         playerskillList.add(new Skill("\uD83E\uDE85 불의 손길", "마법", "다음 공격이 확정적으로 2배의 대미지를 입힙니다. \n STR 10% | INT 5%", 33,"마법사", 0,20, 20, 30));
         playerskillList.add(new Skill("\uD83C\uDF87 메테오 샤워", "마법", "유성우를 떨어뜨려 높은 대미지를 입힙니다. \n STR 10% | INT 5%",40,"마법사", 0, 20, 20, 30));
 
-        playerskillList.add(new Skill("메테오 샤워", "마법", "유성우를 떨어뜨려 높은 대미지를 입힙니다. \n STR 10% | INT 5%",40,"고블린", 0, 20, 20, 30));
-        playerskillList.add(new Skill("메테오 샤워", "마법", "유성우를 떨어뜨려 높은 대미지를 입힙니다. \n STR 10% | INT 5%",40,"대왕슬라임", 0, 20, 20, 30));
-        playerskillList.add(new Skill("메테오 샤워", "마법", "유성우를 떨어뜨려 높은 대미지를 입힙니다. \n STR 10% | INT 5%",40,"슬라임", 0, 20, 20, 30));
-        playerskillList.add(new Skill("메테오 샤워", "마법", "유성우를 떨어뜨려 높은 대미지를 입힙니다. \n STR 10% | INT 5%",40,"홉고블린", 0, 20, 20, 30));
+        playerskillList.add(new Skill("몽둥이 휘두르기", "물리", "몽둥이를 휘두릅니다",40,"고블린", 0, 30, 0, 0));
+        playerskillList.add(new Skill("용액 뿌리기", "마법", "슬라임이 자신의 일부를 던집니다",40,"슬라임", 0, 30, 0, 0));
+
+        playerskillList.add(new Skill("메테오 샤워", "마법", "유성우를 떨어뜨려 높은 대미지를 입힙니다. \n STR 10% | INT 5%",40,"대왕슬라임", 0, 40, 20, 30));
+        playerskillList.add(new Skill("메테오 샤워", "마법", "유성우를 떨어뜨려 높은 대미지를 입힙니다. \n STR 10% | INT 5%",40,"홉고블린", 0, 40, 20, 30));
         playerskillList.add(new Skill("메테오 샤워", "마법", "유성우를 떨어뜨려 높은 대미지를 입힙니다. \n STR 10% | INT 5%",40,"산성슬라임", 0, 20, 20, 30));
         playerskillList.add(new Skill("메테오 샤워", "마법", "유성우를 떨어뜨려 높은 대미지를 입힙니다. \n STR 10% | INT 5%",40,"킹고블린", 0, 20, 20, 30));
         playerskillList.add(new Skill("메테오 샤워", "마법", "유성우를 떨어뜨려 높은 대미지를 입힙니다. \n STR 10% | INT 5%",40,"흑랑", 0, 20, 20, 30));
