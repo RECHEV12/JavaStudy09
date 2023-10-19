@@ -2,6 +2,9 @@ package mygame;
 
 import java.util.ArrayList;
 
+import static mygame.Item.returnItemOne;
+import static mygame.Item.returnItemOneName;
+
 public class Class {
     private String playerClass; /*캐릭터 직업*/
     private String playerName; /*플레이어 이름*/
@@ -21,27 +24,27 @@ public class Class {
 
     @Override
     public String toString() {
-        return "Class{" +
-                "playerClass='" + playerClass + '\'' +
-                ", playerName='" + playerName + '\'' +
-                ", lv=" + lv +
-                ", exp=" + exp +
-                ", nextExp=" + nextExp +
-                ", statSTR=" + statSTR +
-                ", statDEX=" + statDEX +
-                ", statINT=" + statINT +
-                ", statLUK=" + statLUK +
-                ", statNowHP=" + statNowHP +
-                ", statMaxHP=" + statMaxHP +
-                ", statNowMP=" + statNowMP +
-                ", statMaxMP=" + statMaxMP +
-                ", extraStat=" + extraStat +
-                ", money=" + money +
-                ", weapon=" + weapon +
-                ", equiq=" + equiq +
-                ", playerSkillList=" + playerSkillList +
-                ", itemsList=" + itemsList +
-                '}';
+        String weaponNull = "없음";
+        String equiqNull = "없음";
+        if (!(weapon == null)){
+            weaponNull = weapon.getItemName();
+                    }
+        if (!(equiq == null)){
+            equiqNull = equiq.getItemName();
+        }
+
+        return
+                "╔═════════════════════════════════════════════════════════════════╗" + '\n' +
+                        "직업 : " + playerClass + '\n' +
+                        "이름 : " + playerName + "  레벨 : " + lv + '\n' +
+                        "현재 경험치 : " + exp + "레벨업 요구치 : " + (nextExp - exp) + '\n' +
+                        "\uD83D\uDCAA STR : " + statSTR + "  \uD83C\uDFAF DEX : " + statDEX + '\n' +
+                        "\uD83C\uDF93 INT : " + statINT + "  \uD83C\uDFB2 LUK : " + statLUK + '\n' +
+                        "❤\uFE0F 현재체력 : " + statNowHP + "  ❤\uFE0F 최대체력 : " + statMaxHP + '\n' +
+                        "\uD83D\uDCA0 현재마나 : " + statNowMP + "  \uD83D\uDCA0 최대마나 : " + statMaxMP + '\n' +
+                        "\uD83E\uDEA9 여분 스탯 : " + extraStat + "  \uD83D\uDCB0 소지금 : " + money + '\n' +
+                        "\uD83D\uDDE1\uFE0F 무기 : " + weaponNull + "  \uD83D\uDEE1\uFE0F 방어구 : " + equiqNull + '\n' +
+                        "╚═════════════════════════════════════════════════════════════════╝";
     }
 
     private int money; /*소지금*/
@@ -61,30 +64,123 @@ public class Class {
 
     // 아이템 박스 열람
     public static void openItemBox(Class user, int inputNum) {
+        if (!user.getItemsList().isEmpty()) {
+            if (user.getPlayerClass().contains("전사")) {
+                if (Class.getWarrior().itemsList.isEmpty()) {
+                    System.out.println("아이템이 존재하지 않습니다.");
+
+                } else {
+                    if (inputNum == 1) {
+                        for (Item item : Class.getWarrior().itemsList) {
+                            if (item.getItemType().contains("무기")) {
+                                returnItemOneName(item, Class.getWarrior().itemsList.indexOf(item));
+
+
+                            } else {
+                                UtillMethod.boxBox("무기가 없습니다");
+                            }
+
+                        }
+                    } else if (inputNum == 2) {
+                        for (Item item : Class.getWarrior().itemsList) {
+                            if (item.getItemType().contains("방어구")) {
+                                returnItemOneName(item, Class.getWarrior().itemsList.indexOf(item));
+                            } else {
+                                UtillMethod.boxBox("방어구가 없습니다");
+                            }
+                        }
+                    } else if (inputNum == 3) {
+                        for (Item item : Class.getWarrior().itemsList) {
+
+                            if (item.getItemType().contains("포션")) {
+                                returnItemOneName(item, Class.getWarrior().itemsList.indexOf(item));
+
+                            } else {
+                                UtillMethod.boxBox("포션이 없습니다");
+                            }
+                        }
+                    }
+
+                }
+            } else if (user.getPlayerClass().contains("마법사")) {
+                if (Class.getMagician().itemsList.isEmpty()) {
+                    System.out.println("아이템이 존재하지 않습니다.");
+                } else {
+                    if (inputNum == 1) {
+                        for (Item item : Class.getMagician().itemsList) {
+                            if (item.getItemType().contains("무기")) {
+                                returnItemOneName(item, Class.getMagician().itemsList.indexOf(item));
+
+
+                            } else {
+                                UtillMethod.boxBox("무기가 없습니다");
+                            }
+
+                        }
+                    } else if (inputNum == 2) {
+                        for (Item item : Class.getMagician().itemsList) {
+                            if (item.getItemType().contains("방어구")) {
+
+                                returnItemOneName(item, Class.getMagician().itemsList.indexOf(item));
+
+                            } else {
+                                UtillMethod.boxBox("방어구가 없습니다");
+                            }
+                        }
+                    } else if (inputNum == 3) {
+                        for (Item item : Class.getMagician().itemsList) {
+
+                            if (item.getItemType().contains("포션")) {
+                                returnItemOneName(item, Class.getMagician().itemsList.indexOf(item));
+
+                            } else {
+                                UtillMethod.boxBox("포션이 없습니다");
+                            }
+                        }
+                    }
+                }
+            }
+        } else {
+            UtillMethod.boxBox("아이템이 존재하지 않습니다.");
+        }
+    }
+
+    public static int openItemBoxAlpha(Class user, int inputNum) {
+        int a = 1;
 
         if (user.getPlayerClass().contains("전사")) {
             if (Class.getWarrior().itemsList.isEmpty()) {
-                System.out.println("아이템이 존재하지 않습니다.");
+
+                a = 0;
 
             } else {
                 if (inputNum == 1) {
                     for (Item item : Class.getWarrior().itemsList) {
                         if (item.getItemType().contains("무기")) {
-                            System.out.println("No." + Class.getWarrior().itemsList.indexOf(item) + item);
+
+                        } else {
+
+                            a = 0;
                         }
 
                     }
                 } else if (inputNum == 2) {
                     for (Item item : Class.getWarrior().itemsList) {
                         if (item.getItemType().contains("방어구")) {
-                            System.out.println("No." + Class.getWarrior().itemsList.indexOf(item) + item);
+
+                        } else {
+
+                            a = 0;
                         }
                     }
                 } else if (inputNum == 3) {
                     for (Item item : Class.getWarrior().itemsList) {
 
                         if (item.getItemType().contains("포션")) {
-                            System.out.println("No." + Class.getWarrior().itemsList.indexOf(item) + item);
+
+                        } else {
+
+                            a = 0;
                         }
                     }
                 }
@@ -93,30 +189,41 @@ public class Class {
         } else if (user.getPlayerClass().contains("마법사")) {
             if (Class.getMagician().itemsList.isEmpty()) {
                 System.out.println("아이템이 존재하지 않습니다.");
+                a = 0;
             } else {
                 if (inputNum == 1) {
                     for (Item item : Class.getMagician().itemsList) {
                         if (item.getItemType().contains("무기")) {
-                            System.out.println("No." + Class.getMagician().itemsList.indexOf(item) + item);
+
+                        } else {
+                            UtillMethod.boxBox("무기가 없습니다");
+                            a = 0;
                         }
 
                     }
                 } else if (inputNum == 2) {
                     for (Item item : Class.getMagician().itemsList) {
                         if (item.getItemType().contains("방어구")) {
-                            System.out.println("No." + Class.getMagician().itemsList.indexOf(item) + item);
+
+                        } else {
+                            UtillMethod.boxBox("방어구가 없습니다");
+                            a = 0;
                         }
                     }
                 } else if (inputNum == 3) {
                     for (Item item : Class.getMagician().itemsList) {
 
                         if (item.getItemType().contains("포션")) {
-                            System.out.println("No." + Class.getMagician().itemsList.indexOf(item) + item);
+
+                        } else {
+                            UtillMethod.boxBox("포션이 없습니다");
+                            a = 0;
                         }
                     }
                 }
             }
         }
+        return a;
     }
 
 
@@ -148,28 +255,28 @@ public class Class {
         user.setStatMaxMP(user.getStatMaxMP() + im.getPlusMaxMP());
 
         if (a < user.getStatSTR()) {
-            System.out.println("스탯 : STR " + a + "➡\uFE0F" + (user.getStatSTR()));
+            System.out.println("\uD83D\uDCAA STR " + a + "➡\uFE0F" + (user.getStatSTR()));
         }
         if (b < user.getStatDEX()) {
-            System.out.println("스탯 : DEX " + b + "➡\uFE0F" + (user.getStatDEX()));
+            System.out.println("\uD83C\uDFAF DEX " + b + "➡\uFE0F" + (user.getStatDEX()));
         }
         if (c < user.getStatINT()) {
-            System.out.println("스탯 : INT " + c + "➡\uFE0F" + (user.getStatINT()));
+            System.out.println("\uD83C\uDF93 INT " + c + "➡\uFE0F" + (user.getStatINT()));
         }
         if (d < user.getStatLUK()) {
-            System.out.println("스탯 : LUK " + d + "➡\uFE0F" + (user.getStatLUK()));
+            System.out.println("\uD83C\uDFB2 LUK " + d + "➡\uFE0F" + (user.getStatLUK()));
         }
         if (e < user.getStatNowHP()) {
-            System.out.println("스탯 : 현재체력 " + e + "➡\uFE0F" + (user.getStatNowHP()));
+            System.out.println("❤\uFE0F 현재체력 " + e + "➡\uFE0F" + (user.getStatNowHP()));
         }
         if (f < user.getStatMaxHP()) {
-            System.out.println("스탯 : 최대체력 " + f + "➡\uFE0F" + (user.getStatMaxHP()));
+            System.out.println("❤\uFE0F 최대체력 " + f + "➡\uFE0F" + (user.getStatMaxHP()));
         }
         if (g < user.getStatNowMP()) {
-            System.out.println("스탯 : 현재마나 " + g + "➡\uFE0F" + (user.getStatNowMP()));
+            System.out.println("\uD83D\uDCA0 현재마나 " + g + "➡\uFE0F" + (user.getStatNowMP()));
         }
         if (h < user.getStatMaxMP()) {
-            System.out.println("스탯 : 최대마나 " + h + "➡\uFE0F" + (user.getStatMaxMP()));
+            System.out.println("\uD83D\uDCA0 최대마나 " + h + "➡\uFE0F" + (user.getStatMaxMP()));
         }
 
 
@@ -204,28 +311,28 @@ public class Class {
 
 
         if (a > user.getStatSTR()) {
-            System.out.println("스탯 : STR " + a + "➡\uFE0F" + (user.getStatSTR()));
+            System.out.println("\uD83D\uDCAA STR " + a + "➡\uFE0F" + (user.getStatSTR()));
         }
         if (b > user.getStatDEX()) {
-            System.out.println("스탯 : DEX " + b + "➡\uFE0F" + (user.getStatDEX()));
+            System.out.println("\uD83C\uDFAF DEX " + b + "➡\uFE0F" + (user.getStatDEX()));
         }
         if (c > user.getStatINT()) {
-            System.out.println("스탯 : INT " + c + "➡\uFE0F" + (user.getStatINT()));
+            System.out.println("\uD83C\uDF93 INT " + c + "➡\uFE0F" + (user.getStatINT()));
         }
         if (d > user.getStatLUK()) {
-            System.out.println("스탯 : LUK " + d + "➡\uFE0F" + (user.getStatLUK()));
+            System.out.println("\uD83C\uDFB2 LUK " + d + "➡\uFE0F" + (user.getStatLUK()));
         }
         if (e > user.getStatNowHP()) {
-            System.out.println("스탯 : 현재체력 " + e + "➡\uFE0F" + (user.getStatNowHP()));
+            System.out.println("❤\uFE0F 현재체력 " + e + "➡\uFE0F" + (user.getStatNowHP()));
         }
         if (f > user.getStatMaxHP()) {
-            System.out.println("스탯 : 최대체력 " + f + "➡\uFE0F" + (user.getStatMaxHP()));
+            System.out.println("❤\uFE0F 최대체력 " + f + "➡\uFE0F" + (user.getStatMaxHP()));
         }
         if (g > user.getStatNowMP()) {
-            System.out.println("스탯 : 현재마나 " + g + "➡\uFE0F" + (user.getStatNowMP()));
+            System.out.println("\uD83D\uDCA0 현재마나 " + g + "➡\uFE0F" + (user.getStatNowMP()));
         }
         if (h > user.getStatMaxMP()) {
-            System.out.println("스탯 : 최대마나 " + h + "➡\uFE0F" + (user.getStatMaxMP()));
+            System.out.println("\uD83D\uDCA0 최대마나 " + h + "➡\uFE0F" + (user.getStatMaxMP()));
         }
     }
 
@@ -236,7 +343,8 @@ public class Class {
         Item im = temp.get(choiceNum);
 
         if (im.getItemType().contains("포션") && !im.isNowEq()) {
-            System.out.println(im.getItemName() + "을(를) 사용했습니다.");
+            UtillMethod.boxBox(im.getItemName() + "을(를) 사용했습니다.");
+
 
             im.setNowEq(true);
 
@@ -250,7 +358,8 @@ public class Class {
             if (user.getWeapon() == null) {
 
                 user.setWeapon(im);
-                System.out.println(user.getWeapon().getItemName() + "을(를) 장착했습니다.");
+
+                UtillMethod.boxBox(user.getWeapon().getItemName() + "을(를) 장착했습니다.");
 
 
                 showChangeUpStat(choiceNum, user);
@@ -258,14 +367,15 @@ public class Class {
                 im.setNowEq(true);
                 //장비하고 있는게 있을 때
             } else {
-                System.out.println(user.getWeapon().getItemName() + "을(를) 탈착했습니다.");
+                UtillMethod.boxBox(user.getWeapon().getItemName() + "을(를) 탈착했습니다.");
+
                 showChangeDownStat(user.getItemsList().indexOf(user.getWeapon()), user);
 
                 user.getWeapon().setNowEq(false);
                 user.setWeapon(null);
-                System.out.println("=====================================");
+                System.out.println("⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶");
                 user.setWeapon(im);
-                System.out.println(user.getWeapon().getItemName() + "을(를) 장착했습니다.");
+                UtillMethod.boxBox(user.getWeapon().getItemName() + "을(를) 장착했습니다.");
 
 
                 showChangeUpStat(choiceNum, user);
@@ -279,7 +389,7 @@ public class Class {
             if (user.getEquiq() == null) {
 
                 user.setEquiq(im);
-                System.out.println(user.getEquiq().getItemName() + "을(를) 장착했습니다.");
+                UtillMethod.boxBox(user.getEquiq().getItemName() + "을(를) 장착했습니다.");
 
 
                 showChangeUpStat(choiceNum, user);
@@ -287,14 +397,15 @@ public class Class {
                 im.setNowEq(true);
                 //장비하고 있는게 있을 때
             } else {
-                System.out.println(user.getEquiq().getItemName() + "을(를) 탈착했습니다.");
+                UtillMethod.boxBox(user.getEquiq().getItemName() + "을(를) 탈착했습니다.");
+
                 showChangeDownStat(user.getItemsList().indexOf(user.getEquiq()), user);
 
                 user.getEquiq().setNowEq(false);
                 user.setEquiq(null);
-                System.out.println("=====================================");
+                System.out.println("⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶");
                 user.setEquiq(im);
-                System.out.println(user.getEquiq().getItemName() + "을(를) 장착했습니다.");
+                UtillMethod.boxBox(user.getEquiq().getItemName() + "을(를) 장착했습니다.");
 
 
                 showChangeUpStat(choiceNum, user);
@@ -306,6 +417,81 @@ public class Class {
         }
     }
 
+    public static int lastestItem(Class user) {
+        int a = user.getItemsList().size() - 1;
+        return a;
+    }
+
+    public static void buyItem(int choiceNum, Class user, ShopDB shopDB) {
+        if (user.getMoney() < shopDB.getShopList().get(choiceNum).getPrice()) {
+            UtillMethod.boxBox("돈이 부족합니다.");
+        } else {
+            user.getItemsList().add(shopDB.getShopList().get(choiceNum));
+            UtillMethod.boxBox(shopDB.getShopList().get(choiceNum).getItemName() + "을(를) 구입했습니다!");
+            int a = user.getMoney();
+            user.setMoney(user.getMoney() - shopDB.getShopList().get(choiceNum).getPrice());
+            UtillMethod.boxBox("소지금 : " + a + "➡\uFE0F" + user.getMoney(), "현재 소지금 : " + user.getMoney());
+        }
+    }
+
+    public static boolean buyItemAlpha(int choiceNum, Class user, ShopDB shopDB) {
+        boolean al = false;
+        if (user.getMoney() < shopDB.getShopList().get(choiceNum).getPrice()) {
+            al = false;
+        } else {
+            al = true;
+        }
+        return al;
+    }
+
+    public static void sellItem(int choiceNum, Class user) {
+        Item willSellItem = user.getItemsList().get(choiceNum);
+
+        if (willSellItem.isNowEq()) {
+
+            if (willSellItem.getItemType().contains("무기")) {
+
+                UtillMethod.boxBox(user.getWeapon().getItemName() + "을(를) 탈착했습니다.");
+                showChangeDownStat(user.getItemsList().indexOf(user.getWeapon()), user);
+
+                user.getWeapon().setNowEq(false);
+                user.setWeapon(null);
+
+                System.out.println("⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶");
+                UtillMethod.boxBox(willSellItem.getItemName() + "이(가) 판매되었습니다.");
+                int a = user.getMoney();
+                user.setMoney(user.getMoney() + willSellItem.getPrice());
+                UtillMethod.boxBox("소지금 : " + a + "➡\uFE0F" + user.getMoney(), "현재 소지금 : " + user.getMoney());
+                user.getItemsList().remove(choiceNum);
+
+
+            } else if (willSellItem.getItemType().contains("방어구")) {
+                UtillMethod.boxBox(user.getEquiq().getItemName() + "을(를) 탈착했습니다.");
+
+                showChangeDownStat(user.getItemsList().indexOf(user.getEquiq()), user);
+
+                user.getEquiq().setNowEq(false);
+                user.setEquiq(null);
+                System.out.println("⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶");
+                UtillMethod.boxBox(willSellItem.getItemName() + "이(가) 판매되었습니다.");
+
+                int a = user.getMoney();
+                user.setMoney(user.getMoney() + willSellItem.getPrice());
+                UtillMethod.boxBox("소지금 : " + a + "➡\uFE0F" + user.getMoney(), "현재 소지금 : " + user.getMoney());
+                user.getItemsList().remove(choiceNum);
+            }
+        } else {
+            UtillMethod.boxBox(willSellItem.getItemName() + "이(가) 판매되었습니다.");
+            int a = user.getMoney();
+            user.setMoney(user.getMoney() + willSellItem.getPrice());
+            UtillMethod.boxBox("소지금 : " + a + "➡\uFE0F" + user.getMoney(), "현재 소지금 : " + user.getMoney());
+
+            user.getItemsList().remove(choiceNum);
+        }
+
+
+        ArrayList<Item> temp = user.getItemsList();
+    }
 
     /**
      * 최종 레벨업 기믹
@@ -313,7 +499,17 @@ public class Class {
      * @param user    유저 정보
      * @param levelDB 레벨 리스트
      */
-    public static void levelUP(Class user, LevelDB levelDB) {
+    public static void levelUP(Class user, LevelDB levelDB) throws InterruptedException {
+
+        int a = user.getStatSTR();
+        int b = user.getStatDEX();
+        int c = user.getStatINT();
+        int d = user.getStatLUK();
+        int e = user.getStatNowHP();
+        int f = user.getStatMaxHP();
+        int g = user.getStatNowMP();
+        int h = user.getStatMaxMP();
+
         while (user.getExp() >= user.getNextExp() && user.getLv() < 40) {
             if (user.getExp() >= user.getNextExp()) {
                 if (user.getPlayerClass().equals("전사") ||
@@ -328,6 +524,15 @@ public class Class {
                     user.setStatLUK(user.getStatLUK() + 1);
                     user.setExtraStat(user.getExtraStat() + 4);
 
+                    System.out.println("\uD83D\uDCAA STR " + a + "➡\uFE0F" + (user.getStatSTR()));
+                    System.out.println("\uD83C\uDFAF DEX " + b + "➡\uFE0F" + (user.getStatDEX()));
+                    System.out.println("\uD83C\uDF93 INT " + c + "➡\uFE0F" + (user.getStatINT()));
+                    System.out.println("\uD83C\uDFB2 LUK " + d + "➡\uFE0F" + (user.getStatLUK()));
+                    System.out.println("❤\uFE0F 현재체력 " + e + "➡\uFE0F" + (user.getStatNowHP()));
+                    System.out.println("❤\uFE0F 최대체력 " + f + "➡\uFE0F" + (user.getStatMaxHP()));
+                    System.out.println("\uD83D\uDCA0 현재마나 " + g + "➡\uFE0F" + (user.getStatNowMP()));
+                    System.out.println("\uD83D\uDCA0 최대마나 " + h + "➡\uFE0F" + (user.getStatMaxMP()));
+
                 } else if (user.getPlayerClass().equals("마법사") ||
                         user.getPlayerClass().equals("현자")) {
                     user.setStatSTR(user.getStatSTR() + 1);
@@ -339,18 +544,27 @@ public class Class {
                     user.setStatMaxMP(user.getStatMaxMP() + 12);
                     user.setStatLUK(user.getStatLUK() + 1);
                     user.setExtraStat(user.getExtraStat() + 4);
+
+                    System.out.println("\uD83D\uDCAA STR " + a + "➡\uFE0F" + (user.getStatSTR()));
+                    System.out.println("\uD83C\uDFAF DEX " + b + "➡\uFE0F" + (user.getStatDEX()));
+                    System.out.println("\uD83C\uDF93 INT " + c + "➡\uFE0F" + (user.getStatINT()));
+                    System.out.println("\uD83C\uDFB2 LUK " + d + "➡\uFE0F" + (user.getStatLUK()));
+                    System.out.println("❤\uFE0F 현재체력 " + e + "➡\uFE0F" + (user.getStatNowHP()));
+                    System.out.println("❤\uFE0F 최대체력 " + f + "➡\uFE0F" + (user.getStatMaxHP()));
+                    System.out.println("\uD83D\uDCA0 현재마나 " + g + "➡\uFE0F" + (user.getStatNowMP()));
+                    System.out.println("\uD83D\uDCA0 최대마나 " + h + "➡\uFE0F" + (user.getStatMaxMP()));
                 }
             }
 
             user.setExp(user.getExp() - user.getNextExp());
             user.setLv(user.getLv() + 1);
             user.setNextExp(levelDB.LevelUP(user.getLv()));
-            System.out.println("레벨 업!! 레벨이 " + user.getLv() + "이 되었다!!");
+            UtillMethod.boxBox("레벨 업!! 레벨이 " + user.getLv() + "이 되었다!!");
             UtillMethod.userSetSkill(user);
+            Thread.sleep(400);
 
         }
     }
-
 
     public Class() {
     }
@@ -376,7 +590,7 @@ public class Class {
     }
 
     // 초기 캐릭터 설정
-    private static Class warrior = new Class("전사", "", 1, 0, 10, 1200, 10, 7, 5, 17, 17, 9, 9, 0, 1000);
+    private static Class warrior = new Class("전사", "", 1, 0, 10, 1123, 10, 7, 5, 17, 17, 9, 9, 0, 1000);
     private static Class magician = new Class("마법사", "", 1, 0, 10, 700, 100, 1002, 5, 14, 14, 12, 12, 0, 1000);
 
     public static Class getWarrior() {

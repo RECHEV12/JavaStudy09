@@ -9,12 +9,12 @@ public class Skill {
 
     public static void printSkillList(Class user) {
         for (Skill sk : user.getPlayerSkillList()) {
+
             System.out.println(
                     " ⚔\uFE0F " + "No. " + (user.playerSkillList.indexOf(sk) + 1) + " - " + sk.getSkillName()
             );
         }
     }
-
 
 
     @Override

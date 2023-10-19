@@ -28,7 +28,15 @@ public class Monster {
         this.monsterATK = monsterATK;
         this.monsterHP = monsterHP;
     }
-
+    public Monster(Monster a){
+        this.monsterGroup = a.getMonsterGroup();
+        this.monsterNum = a.getMonsterNum();
+        this.monsterName = a.getMonsterName();
+        this.monsterLv = a.getMonsterLv();
+        this.monsterType = a.getMonsterType();
+        this.monsterATK = a.getMonsterATK();
+        this.monsterHP = a.getMonsterHP();
+    }
 
     @Override
     public String toString() {
@@ -68,11 +76,15 @@ public class Monster {
 
     public void battleMonsterData(Monster a, double b) {
         if (b == 1.0) {
-            System.out.println(a.getMonsterName() + " Lv." + a.getMonsterLv() + "\n" + "❤️ : " + a.getMonsterHP());
+            System.out.println("╔═════════════════════════╗");
+            System.out.println("| " + a.getMonsterName() + " Lv." + a.getMonsterLv() + "\n" + "| "+"❤️ : " + a.getMonsterHP());
+            System.out.println("╚═════════════════════════╝");
 
         }
         if (b == 1.5) {
-            System.out.println("🌟 " + a.getMonsterName() + " - Lv." + a.getMonsterLv() + "\n" + "❤\uFE0F : " + a.getMonsterHP());
+            System.out.println("╔═════════════════════════╗");
+            System.out.println("| " + "🌟 " + a.getMonsterName() + " - Lv." + a.getMonsterLv() + "\n" +"| " + "❤\uFE0F : " + a.getMonsterHP());
+            System.out.println("╚═════════════════════════╝");
         }
     }
 

@@ -47,12 +47,12 @@ public class MonsterDB {
         int alpha = UtillMethod.makeRandom(0, a.size() - 1);
 
         // 몬스터를 새 개체에 담기
-       Monster b = a.get(alpha);
-        return b;
+        return a.get(alpha);
     }
 
 public void setMonster(Monster a){
     // 레벨 설정
+    Monster mob = a;
   if (a.getMonsterGroup() == 1) {
         a.setMonsterLv(UtillMethod.makeRandom(1, 9));
     } else if (a.getMonsterGroup() == 3) {

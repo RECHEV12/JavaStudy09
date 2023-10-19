@@ -57,6 +57,7 @@ public class Item {
         this.price = price;
     }
 
+
     @Override
     public String toString() {
         return "Item{" +
@@ -76,7 +77,6 @@ public class Item {
                 ", price=" + price +
                 '}';
     }
-
 
     public Item(String itemName,
                 String itemType,
@@ -106,26 +106,117 @@ public class Item {
         this.dropMob = dropMob;
     }
 
-    public static Item dropItem(Monster a){
+    public static void showShop(ShopDB shop, int inputNum) {
+
+        ArrayList<Item> shoplist = shop.getShopList();
+        if (inputNum == 1) {
+            for (Item item : shoplist) {
+                if (item.getItemType().contains("무기")) {
+                    returnItemOne(item, shoplist.indexOf(item));
+                }
+
+            }
+        } else if (inputNum == 2) {
+            for (Item item : shoplist) {
+                if (item.getItemType().contains("방어구")) {
+                    returnItemOne(item, shoplist.indexOf(item));
+                }
+            }
+        } else if (inputNum == 3) {
+            for (Item item : shoplist) {
+
+                if (item.getItemType().contains("포션")) {
+                    returnItemOne(item, shoplist.indexOf(item));
+                }
+            }
+        }
+    }
+
+
+    public static Item dropItem(Monster a) {
         ArrayList<Item> temp = new ArrayList<>();
         ItemDB itemDB = new ItemDB();
         Item tempItem = new Item();
 
-        for (Item it : itemDB.getItemList()){
-            if (it.getDropMob().contains(a.getMonsterName())){
+        for (Item it : itemDB.getItemList()) {
+            if (it.getDropMob().contains(a.getMonsterName())) {
                 temp.add(it);
             }
         }
         double randNum = UtillMethod.random5per();
 
-        if (randNum == 1){
-            int randomNum =UtillMethod.makeRandom(0, temp.size()-1);
+        if (randNum == 1) {
+            int randomNum = UtillMethod.makeRandom(0, temp.size() - 1);
             tempItem = temp.get(randomNum);
 
         }
         return tempItem;
     }
 
+
+    public static void returnItemOne(Item item, int a) {
+
+        String nowEq = "";
+
+        if (item.isNowEq()) {
+            nowEq = "장비중";
+        } else {
+            nowEq = "수납중/판매중";
+        }
+        System.out.println("╔═════════════════════════════════════════════════════════════════╗");
+        System.out.println("아이템 번호 : " + (a+1));
+        System.out.println("이름 : " + item.getItemName());
+        System.out.println("분류 : " + item.getItemType());
+        System.out.println("아이템 설명 : " + item.getItemDetail());
+        System.out.println("\uD83D\uDCAA STR : " + item.getPlusSTR() + "\uD83C\uDFAF DEX : " + item.getPlusDEX());
+        System.out.println("\uD83C\uDF93 INT : " + item.getPlusINT() + "\uD83C\uDFB2 LUK : " + item.getPlusLUK());
+        System.out.println("❤\uFE0F 현재체력 : " + item.getPlusNowHP() + "❤\uFE0F 최대체력 : " + item.getPlusMaxHP());
+        System.out.println("\uD83D\uDCA0 현재마나 : " + item.getPlusNowMP() + "\uD83D\uDCA0 최대마나 : " + item.getPlusMaxMP());
+        System.out.println("현재 장비 상태 : " + nowEq);
+        System.out.println("획득처 : " + item.getDropMob());
+        System.out.println("가격 : " + item.getPrice());
+        System.out.println("╚═════════════════════════════════════════════════════════════════╝");
+    }
+
+
+    public static void returnItemOneName(Item item, int a) {
+
+        String nowEq = "";
+
+        if (item.isNowEq()) {
+            nowEq = "장비중";
+        } else {
+            nowEq = "수납중/판매중";
+        }
+        System.out.println("╔═════════════════════════════════════════════════════════════════╗");
+        System.out.println("아이템 번호 : " + (a + 1));
+        System.out.println("이름 : " + item.getItemName());
+        System.out.println("분류 : " + item.getItemType());
+        System.out.println("현재 장비 상태 : " + nowEq);
+        System.out.println("가격 : " + item.getPrice());
+        System.out.println("╚═════════════════════════════════════════════════════════════════╝");
+    }
+
+    public static void returnItemAllName(ArrayList<Item> list) {
+        for (int i = 0; i < list.size(); i++) {
+            Item temp = list.get(i);
+            String nowEq = "";
+
+
+            if (temp.isNowEq()) {
+                nowEq = "장비중";
+            } else {
+                nowEq = "수납중/판매중";
+            }
+            System.out.println("╔═════════════════════════════════════════════════════════════════╗");
+            System.out.println("아이템 번호 : " + i);
+            System.out.println("이름 : " + temp.getItemName());
+            System.out.println("분류 : " + temp.getItemType());
+            System.out.println("현재 장비 상태 : " + nowEq);
+            System.out.println("가격 : " + temp.getPrice());
+            System.out.println("╚═════════════════════════════════════════════════════════════════╝");
+        }
+    }
 
     public Item() {
     }
@@ -178,6 +269,7 @@ public class Item {
     public void setPlusNowHP(int plusNowHP) {
         this.plusNowHP = plusNowHP;
     }
+
     public String getItemName() {
         return itemName;
     }
@@ -185,6 +277,7 @@ public class Item {
     public void setItemName(String itemName) {
         this.itemName = itemName;
     }
+
     public int getPlusMaxHP() {
         return plusMaxHP;
     }
