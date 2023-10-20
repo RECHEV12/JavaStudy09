@@ -155,6 +155,7 @@ public class Item {
         ItemDB itemDB = new ItemDB();
         CanUseItemDB canUseItemDB = new CanUseItemDB();
         Item tempItem = new Item();
+        Item tempItem2 = new Item();
 
         for (Item it : itemDB.getItemList()) {
             if (it.getDropMob().equals(a.getMonsterName())) {
@@ -173,9 +174,9 @@ public class Item {
         int b = random5perInt();
         if (b == 1) {
             int randomNum = UtillMethod.makeRandom(0, temp.size() - 1);
-            tempItem = temp.get(randomNum);
+            tempItem2 = temp.get(randomNum);
         }
-        return tempItem;
+        return tempItem2;
     }
 
 

@@ -389,7 +389,7 @@ public class PlayMain {
                                                 // 아이템 드랍 기믹
                                                 Item temp = Item.dropItem(a);
 
-                                                if (!(temp == null)) {
+                                                if (!(temp.getItemName() == null)) {
                                                     user.getItemsList().add(temp);
                                                     boxBox(temp.getItemName() + "을(를) 획득했다!!");
                                                 }
