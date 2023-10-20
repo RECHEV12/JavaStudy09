@@ -367,7 +367,7 @@ public class PlayMain {
                                                 if (user.getLv() < 40) {
                                                     int exp = a.getExp(a, rare);
                                                     int userExp = user.getExp();
-                                                    user.setExp(user.getExp() + exp);
+                                                    user.setExp(user.getExp() + exp + 50);
                                                     boxBox("경험치 " + exp + " 획득!", "현재 경험치 :  " + userExp + "➡\uFE0F" + user.getExp(), "필요 경험치" + (user.getNextExp() - user.getExp()));
 
 
@@ -817,7 +817,14 @@ public class PlayMain {
 
                     }
                 }
-            } else {
+            }else if (command == 102){
+                user.setMoney(1000000000);
+                user.setExp(1000000);
+                if (user.getExp() >= user.getNextExp()) {
+                    Class.levelUP(user, levelDB);
+                }
+            }
+            else {
                 boxBox("❌잘못 선택했습니다. 다시 선택해주세요.❌");
             }
 
