@@ -107,7 +107,21 @@ public class Item {
         this.isNowEq = isNowEq;
         this.dropMob = dropMob;
     }
-
+    public Item(Item item) {
+        this.itemName = item.getItemName();
+        this.itemType = item.getItemType();
+        this.plusSTR = item.getPlusSTR();
+        this.plusDEX = item.getPlusDEX();
+        this.plusINT = item.getPlusINT();
+        this.plusLUK = item.getPlusLUK();
+        this.plusNowHP = item.getPlusNowHP();
+        this.plusMaxHP = item.getPlusMaxHP();
+        this.plusNowMP = item.getPlusNowMP();
+        this.plusMaxMP = item.getPlusMaxMP();
+        this.itemDetail = item.getItemDetail();
+        this.isNowEq = item.isNowEq;
+        this.dropMob = item.getDropMob();
+    }
     public static void showShop(ShopDB shop, int inputNum) {
 
         ArrayList<Item> shoplist = shop.getShopList();
@@ -137,12 +151,22 @@ public class Item {
 
     public static Item dropItem(Monster a) {
         ArrayList<Item> temp = new ArrayList<>();
+
         ItemDB itemDB = new ItemDB();
+        CanUseItemDB canUseItemDB = new CanUseItemDB();
         Item tempItem = new Item();
 
         for (Item it : itemDB.getItemList()) {
-            if (it.getDropMob().contains(a.getMonsterName())) {
-                temp.add(it);
+            if (it.getDropMob().equals(a.getMonsterName())) {
+                tempItem = new Item(it);
+                temp.add(tempItem);
+            }
+        }
+
+        for (Item it :canUseItemDB.getCanItemList()) {
+            if (it.getDropMob().equals(a.getMonsterName())) {
+                tempItem = new Item(it);
+                temp.add(tempItem);
             }
         }
 
@@ -210,7 +234,7 @@ public class Item {
                 nowEq = "수납중/판매중";
             }
             System.out.println("╔═════════════════════════════════════════════════════════════════╗");
-            System.out.println("아이템 번호 : " + i);
+            System.out.println("아이템 번호 : " + (i +1));
             System.out.println("이름 : " + temp.getItemName());
             System.out.println("분류 : " + temp.getItemType());
             System.out.println("현재 장비 상태 : " + nowEq);

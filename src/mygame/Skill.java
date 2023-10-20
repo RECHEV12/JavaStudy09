@@ -11,7 +11,7 @@ public class Skill {
         for (Skill sk : user.getPlayerSkillList()) {
 
             System.out.println(
-                    " ⚔\uFE0F " + "No. " + (user.playerSkillList.indexOf(sk) + 1) + " - " + sk.getSkillName() + "소비 마나 : " + sk.getUseMp()
+                    " ⚔\uFE0F " + "No. " + (user.playerSkillList.indexOf(sk) + 1) + " - " + sk.getSkillName() + " | 소비 마나 : " + sk.getUseMp() + " | 스킬 타입 : " + sk.getSkillType()
             );
         }
     }

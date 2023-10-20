@@ -41,6 +41,7 @@ public class DamageMethod {
         return(int) UtillMethod.myRound((mob.getMonsterATK()) * num,1);
     }
     public static int defDamage(Class user, Skill skr) {
-        return (user.getStatDEX() * skr.getPerDex());
+        double num =(skr.getPerDex() / (double)100);
+     return    (int)UtillMethod.myRound((num * user.getStatDEX()),1);
     }
 }

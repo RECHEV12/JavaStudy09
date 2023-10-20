@@ -26,10 +26,10 @@ public class Class {
     public String toString() {
         String weaponNull = "없음";
         String equiqNull = "없음";
-        if (!(weapon == null)){
+        if (!(weapon == null)) {
             weaponNull = weapon.getItemName();
-                    }
-        if (!(equiq == null)){
+        }
+        if (!(equiq == null)) {
             equiqNull = equiq.getItemName();
         }
 
@@ -76,7 +76,7 @@ public class Class {
                                 returnItemOneName(item, Class.getWarrior().itemsList.indexOf(item));
 
 
-                            } else{
+                            } else {
                                 UtillMethod.boxBox("무기가 없습니다");
                             }
 
@@ -267,13 +267,23 @@ public class Class {
             System.out.println("\uD83C\uDFB2 LUK " + d + "➡\uFE0F" + (user.getStatLUK()));
         }
         if (e < user.getStatNowHP()) {
-            System.out.println("❤\uFE0F 현재체력 " + e + "➡\uFE0F" + (user.getStatNowHP()));
+            if (user.getStatNowHP() >= user.getStatMaxHP()) {
+                user.setStatNowHP(user.getStatMaxHP());
+                System.out.println("❤\uFE0F 현재체력 " + e + "➡\uFE0F" + (user.getStatNowHP()));
+            } else {
+                System.out.println("❤\uFE0F 현재체력 " + e + "➡\uFE0F" + (user.getStatNowHP()));
+            }
         }
         if (f < user.getStatMaxHP()) {
             System.out.println("❤\uFE0F 최대체력 " + f + "➡\uFE0F" + (user.getStatMaxHP()));
         }
         if (g < user.getStatNowMP()) {
-            System.out.println("\uD83D\uDCA0 현재마나 " + g + "➡\uFE0F" + (user.getStatNowMP()));
+            if (user.getStatNowMP() >= user.getStatMaxMP()) {
+                user.setStatNowMP(user.getStatMaxMP());
+                System.out.println("\uD83D\uDCA0 현재마나 " + g + "➡\uFE0F" + (user.getStatNowMP()));
+            } else {
+                System.out.println("\uD83D\uDCA0 현재마나 " + g + "➡\uFE0F" + (user.getStatNowMP()));
+            }
         }
         if (h < user.getStatMaxMP()) {
             System.out.println("\uD83D\uDCA0 최대마나 " + h + "➡\uFE0F" + (user.getStatMaxMP()));
@@ -343,15 +353,15 @@ public class Class {
         Item im = temp.get(choiceNum);
 
         if (im.getItemType().contains("포션") && !im.isNowEq()) {
+
             UtillMethod.boxBox(im.getItemName() + "을(를) 사용했습니다.");
 
 
-            im.setNowEq(true);
-
             showChangeUpStat(choiceNum, user);
-            if (temp.get(choiceNum).isNowEq()) {
+
+
                 temp.remove(choiceNum);
-            }
+
 
         } else if (im.getItemType().contains("무기")) {
             //장비하고 있는 장비가 하나도 없을 때
@@ -426,7 +436,8 @@ public class Class {
         if (user.getMoney() < shopDB.getShopList().get(choiceNum).getPrice()) {
             UtillMethod.boxBox("돈이 부족합니다.");
         } else {
-            user.getItemsList().add(shopDB.getShopList().get(choiceNum));
+            Item item = new Item(shopDB.getShopList().get(choiceNum));
+            user.getItemsList().add(item);
             UtillMethod.boxBox(shopDB.getShopList().get(choiceNum).getItemName() + "을(를) 구입했습니다!");
             int a = user.getMoney();
             user.setMoney(user.getMoney() - shopDB.getShopList().get(choiceNum).getPrice());
@@ -517,8 +528,8 @@ public class Class {
                     user.setStatSTR(user.getStatSTR() + 3);
                     user.setStatDEX(user.getStatDEX() + 2);
                     user.setStatINT(user.getStatINT() + 1);
-                    user.setStatNowHP(user.getStatNowHP() + 10);
-                    user.setStatMaxHP(user.getStatMaxHP() + 10);
+                    user.setStatNowHP(user.getStatNowHP() + 5);
+                    user.setStatMaxHP(user.getStatMaxHP() + 12);
                     user.setStatNowMP(user.getStatNowMP() + 8);
                     user.setStatMaxMP(user.getStatMaxMP() + 8);
                     user.setStatLUK(user.getStatLUK() + 1);
@@ -538,8 +549,8 @@ public class Class {
                     user.setStatSTR(user.getStatSTR() + 1);
                     user.setStatDEX(user.getStatDEX() + 1);
                     user.setStatINT(user.getStatINT() + 4);
-                    user.setStatNowHP(user.getStatNowHP() + 6);
-                    user.setStatMaxHP(user.getStatMaxHP() + 6);
+                    user.setStatNowHP(user.getStatNowHP() + 5);
+                    user.setStatMaxHP(user.getStatMaxHP() + 10);
                     user.setStatNowMP(user.getStatNowMP() + 12);
                     user.setStatMaxMP(user.getStatMaxMP() + 12);
                     user.setStatLUK(user.getStatLUK() + 1);

@@ -389,11 +389,10 @@ public class PlayMain {
                                                 // 아이템 드랍 기믹
                                                 Item temp = Item.dropItem(a);
 
-                                                if ((temp == null)) {
+                                                if (!(temp == null)) {
                                                     user.getItemsList().add(temp);
                                                     boxBox(temp.getItemName() + "을(를) 획득했다!!");
                                                 }
-                                                System.out.println(user.getItemsList());
                                                 Thread.sleep(400);
 
                                                 System.out.println("⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶⊶⊷⊶⊷⊶⊷⋆⊶⊷⊶⊷⊶");
@@ -542,7 +541,7 @@ public class PlayMain {
                             int choicedItem = Integer.parseInt(scan.nextLine()) - 1;
 
                             if (choicedItem == -1) {
-                                boxBox("필드로 돌아갑니다.");
+                                boxBox("카테고리 선택으로 돌아갑니다.");
                                 continue;
                             }
 
@@ -634,7 +633,7 @@ public class PlayMain {
                     int choicedItem = Integer.parseInt(scan.nextLine()) - 1;
 
                     if (choicedItem == -1) {
-                        boxBox("거점으로 돌아갑니다.");
+                        boxBox("카테고리 선택으로 돌아갑니다.");
                         continue;
                     }
 
@@ -684,6 +683,7 @@ public class PlayMain {
                         System.out.println("\n");
 
                         Item.showShop(shopDB, itemShopCommand);
+                        System.out.println(user.getMoney());
 
                         boxBox("구매할 아이템 번호를 선택해 주세요.");
                         System.out.print("숫자 ▶\uFE0F  ");

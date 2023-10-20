@@ -80,8 +80,9 @@ public class MonsterDB {
             }
         }
 
+
         a.setMonsterHP(a.getMonsterHP() + (a.getMonsterLv() * 2));
-        a.setMonsterATK(a.getMonsterATK() + (int) UtillMethod.myRound(((double) a.getMonsterLv() / 2 ), 1));
+        a.setMonsterATK(a.getMonsterATK() +a.getMonsterLv());
 
 
     }

@@ -77,13 +77,14 @@ public class Monster {
     public void battleMonsterData(Monster a, double b) {
         if (b == 1.0) {
             System.out.println("╔═════════════════════════╗");
-            System.out.println("| " + a.getMonsterName() + " Lv." + a.getMonsterLv() + "\n" + "| "+"❤️ : " + a.getMonsterHP()+ "\n" + "몬스터 \uD83D\uDCAA 공격력 : " +a.getMonsterATK());
+            System.out.println("| " + a.getMonsterName() + " Lv." + a.getMonsterLv() + "\n" + "| "+"❤️ : " + a.getMonsterHP()+ "\n" + "몬스터 \uD83D\uDCAA 공격력 : " +a.getMonsterATK()
+                    + "\n" + "약점 : " + a.getMonsterType());
             System.out.println("╚═════════════════════════╝");
 
         }
         if (b == 1.5) {
             System.out.println("╔═════════════════════════╗");
-            System.out.println("| " + "🌟 " + a.getMonsterName() + " - Lv." + a.getMonsterLv() + "\n" +"| " + "❤\uFE0F : " + a.getMonsterHP()+ "\n"  + "몬스터 \uD83D\uDCAA 공격력 : " + a.getMonsterATK());
+            System.out.println("| " + "🌟 " + a.getMonsterName() + " - Lv." + a.getMonsterLv() + "\n" +"| " + "❤\uFE0F : " + a.getMonsterHP()+ "\n"  + "몬스터 \uD83D\uDCAA 공격력 : " + a.getMonsterATK() + "\n" + "약점 : " + a.getMonsterType());
             System.out.println("╚═════════════════════════╝");
         }
     }
@@ -95,12 +96,12 @@ public class Monster {
 
 
     public int getExp(Monster a, double b) {
-        int exp = (int) UtillMethod.myRound((a.getMonsterLv() + a.getMonsterGroup() * b), 1);
+        int exp = (int) UtillMethod.myRound(((a.getMonsterLv() * 3) + (a.getMonsterGroup() * b)), 1);
         return exp;
     }
 
     public int getMoney(Monster a, double b) {
-        int money = (int) UtillMethod.myRound((a.getMonsterLv() * a.getMonsterGroup() * b) * 50, 1);
+        int money = (int) UtillMethod.myRound((a.getMonsterLv() * (a.getMonsterGroup() * b)) * 50, 1);
         return money;
     }
 
