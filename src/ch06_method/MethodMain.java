@@ -1,5 +1,6 @@
 package ch06_method;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MethodMain {
@@ -303,7 +304,12 @@ public class MethodMain {
             bai = 10 * bai;
         }
         return (double) Math.round(num * bai) / bai;
+
+
+
+
     }
+
 
 
 }

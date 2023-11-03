@@ -21,7 +21,13 @@ public class q03 {
 
         outer:
         while (true) {
+            if (foodList.size() == 2){
+                System.out.println("@@@준결승@@@");
+            }
+            else {
+
             System.out.println("@@@ " + foodList.size() + "강 @@@");
+            }
 
             ArrayList<String> myList = new ArrayList<>();
 
