@@ -157,7 +157,7 @@ public class BoardDAO {
         query.append(" SET                       ");
         query.append("  delete_yn ='Y'           ");
         query.append("WHERE 1=1                  ");
-        query.append(" AND BO_NO = ?          ");
+        query.append(" AND BO_NO = ?             ");
 
         PreparedStatement ps = conn.prepareStatement(query.toString());
 

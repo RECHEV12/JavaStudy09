@@ -34,7 +34,7 @@ public class BoardService {
             result = dao.getBoardList(conn);
         } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             cp.realeaseConnection(conn);
         }
 
@@ -42,7 +42,7 @@ public class BoardService {
     }
 
     // 게시글 입력
-    public void insertBoard(BoardDTO board){
+    public void insertBoard(BoardDTO board) {
         Connection conn = cp.getConnection();
 
         try {
@@ -50,27 +50,28 @@ public class BoardService {
             System.out.println("게시글이 등록되었습니다.");
         } catch (SQLException e) {
             System.out.println("게시글이 등록되지 않았습니다.");
-        }finally {
+        } finally {
             cp.realeaseConnection(conn);
         }
     }
+
     // 게시글 상세보기
-    public BoardDTO detailGetBoard(int boNo){
+    public BoardDTO detailGetBoard(int boNo) {
 
         Connection conn = cp.getConnection();
         BoardDTO board = new BoardDTO();
 
         try {
-            board =  dao.detailGetBoard(conn, boNo);
+            board = dao.detailGetBoard(conn, boNo);
         } catch (SQLException e) {
             System.out.println("게시글이 검색되지 않았습니다.");
-        }finally {
+        } finally {
             cp.realeaseConnection(conn);
         }
         return board;
     }
 
-    public void deleteBoard(BoardDTO board){
+    public void deleteBoard(BoardDTO board) {
 
         Connection conn = cp.getConnection();
 
@@ -79,7 +80,7 @@ public class BoardService {
             System.out.println("게시글이 삭제되었습니다.");
         } catch (SQLException e) {
             System.out.println("게시글이 삭제되지 않았습니다.");
-        }finally {
+        } finally {
             cp.realeaseConnection(conn);
         }
 

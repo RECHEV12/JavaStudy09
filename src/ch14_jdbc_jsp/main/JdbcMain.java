@@ -83,7 +83,7 @@ public class JdbcMain {
 
                         int select = Integer.parseInt(scan.nextLine());
 
-                        if (select == 1){
+                        if (select == 1) {
                             System.out.println("글 제목 : ");
                             String title = scan.nextLine();
 
@@ -93,31 +93,29 @@ public class JdbcMain {
                             // 입력받은 title과 content를 입력
                             // DB에 boards 테이브에 INSERT
 
-                            BoardDTO board = new BoardDTO(0, title, content, id,"","");
+                            BoardDTO board = new BoardDTO(0, title, content, id, "", "");
 
                             boardService.insertBoard(board);
 
-                        }
-                        else if (select == 2){
+                        } else if (select == 2) {
                             System.out.println("글 번호 : ");
                             int boNo = Integer.parseInt(scan.nextLine());
 
                             BoardDTO detailBoard = boardService.detailGetBoard(boNo);
 
-                            if (detailBoard.getBoContent() != null){
-                            System.out.println("===============================================");
-                            System.out.println("제목 : " + detailBoard.getBoTitle());
-                            System.out.println("작성자 : " + detailBoard.getMemName() + "\t\t\t " + "작성일 : " + detailBoard.getBoDate());
-                            System.out.println("내용 : " + detailBoard.getBoContent());
-                            System.out.println("===============================================");
+                            if (detailBoard.getBoContent() != null) {
+                                System.out.println("===============================================");
+                                System.out.println("제목 : " + detailBoard.getBoTitle());
+                                System.out.println("작성자 : " + detailBoard.getMemName() + "\t\t\t " + "작성일 : " + detailBoard.getBoDate());
+                                System.out.println("내용 : " + detailBoard.getBoContent());
+                                System.out.println("===============================================");
 
-                            }else {
+                            } else {
                                 System.out.println("유효하지 않은 게시글 번호 입니다.");
                             }
 
 
-                        }
-                        else if (select == 3){
+                        } else if (select == 3) {
                             System.out.println("글 번호 : ");
                             int boNo = Integer.parseInt(scan.nextLine());
 
@@ -127,26 +125,18 @@ public class JdbcMain {
 
                             BoardDTO board = boardService.detailGetBoard(boNo);
 
-                            if (id.equals(board.getBoId())){
+                            if (id.equals(board.getBoId())) {
 
                                 boardService.deleteBoard(board);
-                            }else {
+                            } else {
                                 System.out.println("작성자와 로그인사람이 다릅니다.");
                             }
 
 
-
-
-
-
-
-
-
-                        }
-                        else if (select == 4){
+                        } else if (select == 4) {
                             System.out.println("로그아웃 합니다.");
                             break;
-                        }else {
+                        } else {
                             System.out.println("잘못 입력하셨습니다.");
                         }
 
