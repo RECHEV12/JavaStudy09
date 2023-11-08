@@ -76,7 +76,8 @@ public class openAPI {
             writer.write(body.toString());
         }
 
-
+// 4766개 다 가져오기
+        //한번에 100개 이상 응답 못받을 수 있음
     }
 
 }

@@ -20,30 +20,22 @@ public class Main {
             System.out.print(">>> ");
             String ache = scan.nextLine();
 
-            if (ache.equals("q")){
+            if (ache.equals("q")) {
                 System.out.println("종료합니다.");
                 break;
-            }else {
-                System.out.println("약국에 가서 아래의 약들을 요청하세요");
+            }
 
-                ArrayList<MedicineDTO> list = medicineService.acheSelectMed(ache);
+            ArrayList<MedicineDTO> list = medicineService.acheSelectMed(ache);
 
-                for (MedicineDTO medi : list){
-                    System.out.println(medi.getMed_itmName());
-                }
+            if (list.size() == 0) {
+                System.out.println("해당 증상에 대한 약이 없습니다.");
+                continue;
+            }
 
+            System.out.println("약국에 가서 아래의 약들을 요청하세요");
 
-
-
-
-
-
-
-
-
-
-
-
+            for (MedicineDTO medi : list) {
+                System.out.println(medi.getMed_itmName());
             }
 
 
