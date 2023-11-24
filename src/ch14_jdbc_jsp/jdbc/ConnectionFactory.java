@@ -33,7 +33,6 @@ public class ConnectionFactory {
             this.pw = prop.getProperty("pw");
             this.maxConn = Integer.parseInt(prop.getProperty("maxConn"));
 
-
             Class.forName("oracle.jdbc.driver.OracleDriver");
             System.out.println("드라이버 로드 성공");
 

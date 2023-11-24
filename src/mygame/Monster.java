@@ -40,7 +40,7 @@ public class Monster {
 
     @Override
     public String toString() {
-        return "Monster{" + "monsterGroup=" + monsterGroup + ", monsterNum=" + monsterNum + ", monsterName='" + monsterName + '\'' + ", monsterLv=" + monsterLv + ", monsterType='" + monsterType + '\'' + ", monsterATK=" + monsterATK + ", monsterSkillList=" + monsterSkillList + ", monsterHP=" + monsterHP + '}';
+        return "Monst   er{" + "monsterGroup=" + monsterGroup + ", monsterNum=" + monsterNum + ", monsterName='" + monsterName + '\'' + ", monsterLv=" + monsterLv + ", monsterType='" + monsterType + '\'' + ", monsterATK=" + monsterATK + ", monsterSkillList=" + monsterSkillList + ", monsterHP=" + monsterHP + '}';
     }
 
     public ArrayList<Skill> getMonsterSkillList() {
